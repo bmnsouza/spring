@@ -1,0 +1,27 @@
+# logging
+logging:
+  file:
+    name: ./logs/^project.name^.log
+  level:
+    com:
+      zaxxer:
+        hikari: off
+    org:
+      hibernate:
+        SQL: debug
+    root: info
+  logback:
+    rollingpolicy:
+      file-name-pattern: ./logs/archived/^project.name^-%d{yyyy-MM-dd}.%i.log
+      max-file-size: 10MB
+
+
+# server
+server:
+  port: 8089
+
+
+# spring
+spring:
+  main:
+    banner-mode: off

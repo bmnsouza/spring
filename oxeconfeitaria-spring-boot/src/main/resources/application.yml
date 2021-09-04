@@ -1,0 +1,99 @@
+# info
+info:
+  app:
+    description: ^project.description^
+    encoding: ^project.build.sourceEncoding^
+    java:
+      version: ^java.version^
+    name: ^project.name^
+    version: ^project.version^
+
+
+# logging
+logging:
+  file:
+    name: ./logs/^project.name^.log
+  level:
+    com:
+      zaxxer:
+        hikari: off
+    org:
+      hibernate:
+        SQL: debug
+    root: info
+  logback:
+    rollingpolicy:
+      file-name-pattern: ./logs/archived/^project.name^-%d{yyyy-MM-dd}.%i.log
+      max-file-size: 10MB
+
+
+# management
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+# oxeconfeitaria
+oxeconfeitaria:
+  datasource:
+    jdbc-url: jdbc:postgresql://localhost:5432/oxeconfeitaria
+    username: postgres
+    password: postgres
+
+
+# project
+project:
+  version: ^project.version^
+
+
+# server
+server:
+  port: 8080
+  servlet:
+    context-path: /api/oxeconfeitaria
+
+
+# spring
+spring:
+  application:
+    name: ^project.name^
+  boot:
+    admin:
+      client:
+        url: http://localhost:8089             data:
+    web:
+      pageable:
+        default-page-size: 1000
+  datasource:
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 10
+      idle-timeout: 10000
+      max-lifetime: 30000
+      connection-timeout: 30000
+    platform: postgres
+  jpa:
+    database: default
+    hibernate:
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+  main:
+    banner-mode: off
+  servlet:
+    multipart:
+      max-file-size: 3MB
+      max-request-size: 3MB
+
+
+# springdoc
+springdoc:
+  api-docs:
+    path: /documentacao

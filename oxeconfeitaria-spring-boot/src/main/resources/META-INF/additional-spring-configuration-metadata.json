@@ -1,0 +1,24 @@
+{
+	"properties": [
+		{
+			"name": "oxeconfeitaria.datasource.jdbc-url",
+			"type": "java.lang.String",
+			"description": "jdbc-url do banco de dados oxeConfeitaria"
+		},
+		{
+			"name": "oxeconfeitaria.datasource.username",
+			"type": "java.lang.String",
+			"description": "username do banco de dados oxeConfeitaria"
+		},
+		{
+			"name": "oxeconfeitaria.datasource.password",
+			"type": "java.lang.String",
+			"description": "password do banco de dados oxeConfeitaria"
+		},
+		{
+			"name": "project.version",
+			"type": "java.lang.String",
+			"description": "Versão do projeto"
+		}
+	]
+}
