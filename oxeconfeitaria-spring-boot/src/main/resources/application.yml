@@ -56,7 +56,10 @@ server:
   port: 8080
   servlet:
     context-path: /api/oxeconfeitaria
-
+  tomcat:
+    threads:
+      max: 4
+    
 
 # spring
 spring:
@@ -65,7 +68,10 @@ spring:
   boot:
     admin:
       client:
-        url: http://localhost:8089             data:
+        instance:
+          prefer-ip: true 
+        url: http://localhost:8089
+  data:
     web:
       pageable:
         default-page-size: 1000
