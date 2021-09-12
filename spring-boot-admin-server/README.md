@@ -1,3 +1,3 @@
-# Spring Boot Admin
+# Spring Boot Admin Server
 
-Aplicativo Web usado para gerenciar e monitorar aplicativos Spring Boot.
+Projeto Spring Boot Admin Server para gerenciar e monitorar aplicativos Spring Boot
