@@ -6,7 +6,7 @@
 		<query>
 		<![CDATA[
 			select * from insumo where (cast(?1 as varchar) is null or idinsumo = to_number(cast(?1 as varchar), '999999999')) 
-			and (cast(?2 as varchar) is null or upper(dsinsumo) like upper('%' || cast(?2 as varchar) || '%'))  order by dsinsumo
+			and (cast(?2 as varchar) is null or upper(dsinsumo) like upper('%' || cast(?2 as varchar) || '%')) order by dsinsumo
 		]]>
 		</query>
 	</named-native-query>

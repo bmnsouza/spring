@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "d19be709-7809-4c3a-9a42-da4798c272fc",
+		"name": "Oxeconfeitaria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Insumo",
+			"item": [
+				{
+					"name": "buscar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/oxeconfeitaria/v1/insumo/buscar?idInsumo=98",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"oxeconfeitaria",
+								"v1",
+								"insumo",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "idInsumo",
+									"value": "98"
+								},
+								{
+									"key": "dsInsumo",
+									"value": "Teste",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscarNativeQuery",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/oxeconfeitaria/v1/insumo/buscarNativeQuery?idInsumo=98",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"oxeconfeitaria",
+								"v1",
+								"insumo",
+								"buscarNativeQuery"
+							],
+							"query": [
+								{
+									"key": "idInsumo",
+									"value": "98"
+								},
+								{
+									"key": "dsInsumo",
+									"value": "AÇÚCAR",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dsInsumo\": \"Teste\",\r\n    \"nrQtdBase\": 1000,\r\n    \"dsMedida\": \"Miligrama\",\r\n    \"vlPreco\": 87.31\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/oxeconfeitaria/v1/insumo/cadastrar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"oxeconfeitaria",
+								"v1",
+								"insumo",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idInsumo\": 101,\r\n    \"dsInsumo\": \"Teste\",\r\n    \"nrQtdBase\": 1000,\r\n    \"dsMedida\": \"Miligrama\",\r\n    \"vlPreco\": 87.32\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/oxeconfeitaria/v1/insumo/atualizar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"oxeconfeitaria",
+								"v1",
+								"insumo",
+								"atualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/oxeconfeitaria/v1/insumo/excluir?idInsumo=101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"oxeconfeitaria",
+								"v1",
+								"insumo",
+								"excluir"
+							],
+							"query": [
+								{
+									"key": "idInsumo",
+									"value": "101"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
