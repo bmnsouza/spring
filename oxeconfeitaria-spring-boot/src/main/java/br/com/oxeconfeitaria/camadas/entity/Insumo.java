@@ -1,4 +1,4 @@
-package br.se.oxeconfeitaria.camadas.entity;
+package br.com.oxeconfeitaria.camadas.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

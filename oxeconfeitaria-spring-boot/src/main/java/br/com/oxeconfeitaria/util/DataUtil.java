@@ -1,4 +1,4 @@
-package br.se.oxeconfeitaria.util;
+package br.com.oxeconfeitaria.util;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

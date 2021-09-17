@@ -1,4 +1,4 @@
-package br.se.oxeconfeitaria.model;
+package br.com.oxeconfeitaria.model;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;

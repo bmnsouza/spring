@@ -1,6 +1,6 @@
-package br.se.oxeconfeitaria.camadas.service.impl;
+package br.com.oxeconfeitaria.camadas.service.impl;
 
-import static br.se.oxeconfeitaria.util.response.ResponseUtil.MENSAGEM_OK;
+import static br.com.oxeconfeitaria.util.response.ResponseUtil.MENSAGEM_OK;
 import static org.springframework.http.HttpStatus.OK;
 
 import java.time.LocalDate;
@@ -14,14 +14,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import br.se.oxeconfeitaria.camadas.entity.Insumo;
-import br.se.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Atualizacao;
-import br.se.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Cadastro;
-import br.se.oxeconfeitaria.camadas.repository.InsumoRepository;
-import br.se.oxeconfeitaria.camadas.service.InsumoService;
-import br.se.oxeconfeitaria.exception.ServiceException;
-import br.se.oxeconfeitaria.util.response.EntidadeResponse;
-import br.se.oxeconfeitaria.util.response.ResponseUtil;
+import br.com.oxeconfeitaria.camadas.entity.Insumo;
+import br.com.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Atualizacao;
+import br.com.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Cadastro;
+import br.com.oxeconfeitaria.camadas.repository.InsumoRepository;
+import br.com.oxeconfeitaria.camadas.service.InsumoService;
+import br.com.oxeconfeitaria.exception.ServiceException;
+import br.com.oxeconfeitaria.util.response.EntidadeResponse;
+import br.com.oxeconfeitaria.util.response.ResponseUtil;
 
 @Service
 public class InsumoServiceImpl implements InsumoService {
@@ -44,6 +44,12 @@ public class InsumoServiceImpl implements InsumoService {
 			dados = insumoRepository.findAll(Sort.by(Sort.Direction.ASC, "dsInsumo"));
 		}
 		
+		return responseUtil.responseSucesso(OK, MENSAGEM_OK, dados);
+	}
+	
+	@Override
+	public ResponseEntity<EntidadeResponse> buscarNativeQuery(Integer idInsumo, String dsInsumo) {
+		List<Insumo> dados = insumoRepository.buscarNativeQuery(idInsumo, dsInsumo);
 		return responseUtil.responseSucesso(OK, MENSAGEM_OK, dados);
 	}
 	

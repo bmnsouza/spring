@@ -1,12 +1,13 @@
-package br.se.oxeconfeitaria.camadas.repository;
+package br.com.oxeconfeitaria.camadas.repository;
 
 import java.util.List;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import br.se.oxeconfeitaria.camadas.entity.Insumo;
+import br.com.oxeconfeitaria.camadas.entity.Insumo;
 
 @Repository
 public interface InsumoRepository extends JpaRepository<Insumo, Integer> {
@@ -15,4 +16,7 @@ public interface InsumoRepository extends JpaRepository<Insumo, Integer> {
 	
 	List<Insumo> findByDsInsumoContainingIgnoreCase(String dsInsumo, Sort sort);
 	
+	@Query(nativeQuery = true)
+	List<Insumo> buscarNativeQuery(Integer idInsumo, String dsInsumo);
+
 }

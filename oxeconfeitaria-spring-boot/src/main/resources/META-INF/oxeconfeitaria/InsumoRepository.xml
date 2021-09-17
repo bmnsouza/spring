@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0" xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+
+	<named-native-query name="Insumo.buscarNativeQuery" result-class="br.com.oxeconfeitaria.camadas.entity.Insumo">
+		<query>
+		<![CDATA[
+			select * from insumo where (cast(?1 as varchar) is null or idinsumo = to_number(cast(?1 as varchar), '999999999')) 
+			and (cast(?2 as varchar) is null or upper(dsinsumo) like upper('%' || cast(?2 as varchar) || '%'))  order by dsinsumo
+		]]>
+		</query>
+	</named-native-query>
+
+</entity-mappings>

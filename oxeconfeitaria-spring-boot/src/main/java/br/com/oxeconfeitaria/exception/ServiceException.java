@@ -1,4 +1,4 @@
-package br.se.oxeconfeitaria.exception;
+package br.com.oxeconfeitaria.exception;
 
 public class ServiceException extends Exception {
 

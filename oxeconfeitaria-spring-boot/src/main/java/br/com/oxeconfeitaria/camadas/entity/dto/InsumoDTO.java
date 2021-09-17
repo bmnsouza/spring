@@ -1,4 +1,4 @@
-package br.se.oxeconfeitaria.camadas.entity.dto;
+package br.com.oxeconfeitaria.camadas.entity.dto;
 
 import java.math.BigDecimal;
 

@@ -1,8 +1,8 @@
-package br.se.oxeconfeitaria.configuration;
+package br.com.oxeconfeitaria.configuration;
 
-import static br.se.oxeconfeitaria.util.DataUtil.DDMMAAAA_BARRA;
-import static br.se.oxeconfeitaria.util.DataUtil.DDMMAAAA_HHMMSS_BARRA;
-import static br.se.oxeconfeitaria.util.DataUtil.HHMMSS_DOIS_PONTOS;
+import static br.com.oxeconfeitaria.util.DataUtil.DDMMAAAA_BARRA;
+import static br.com.oxeconfeitaria.util.DataUtil.DDMMAAAA_HHMMSS_BARRA;
+import static br.com.oxeconfeitaria.util.DataUtil.HHMMSS_DOIS_PONTOS;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

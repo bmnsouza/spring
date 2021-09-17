@@ -1,4 +1,4 @@
-package br.se.oxeconfeitaria.annotation;
+package br.com.oxeconfeitaria.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 import org.springframework.http.MediaType;
 
-import br.se.oxeconfeitaria.util.response.EntidadeResponse;
+import br.com.oxeconfeitaria.util.response.EntidadeResponse;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -33,4 +33,4 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 		 @ApiResponse(responseCode = "500", description = "Erro genérico. A mensagem varia de acordo com a operação", 
 		 		 content = { @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = EntidadeResponse.class)) })
 })
-public @interface DefaultApiResponsesOk {}
+public @interface ApiResponsesOk {}

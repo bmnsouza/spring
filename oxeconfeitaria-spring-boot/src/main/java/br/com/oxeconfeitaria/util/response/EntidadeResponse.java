@@ -1,4 +1,4 @@
-package br.se.oxeconfeitaria.util.response;
+package br.com.oxeconfeitaria.util.response;
 
 import java.util.HashMap;
 

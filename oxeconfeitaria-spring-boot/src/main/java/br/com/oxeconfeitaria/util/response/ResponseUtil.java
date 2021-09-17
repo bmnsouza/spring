@@ -1,9 +1,9 @@
-package br.se.oxeconfeitaria.util.response;
+package br.com.oxeconfeitaria.util.response;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import br.se.oxeconfeitaria.util.response.EntidadeResponse.Response;
+import br.com.oxeconfeitaria.util.response.EntidadeResponse.Response;
 
 public class ResponseUtil {
 

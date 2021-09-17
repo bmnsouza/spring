@@ -1,6 +1,6 @@
-package br.se.oxeconfeitaria.exception;
+package br.com.oxeconfeitaria.exception;
 
-import static br.se.oxeconfeitaria.util.response.ResponseUtil.MENSAGEM_ERRO;
+import static br.com.oxeconfeitaria.util.response.ResponseUtil.MENSAGEM_ERRO;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.CONFLICT;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
@@ -44,9 +44,9 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-import br.se.oxeconfeitaria.model.ResponseModel;
-import br.se.oxeconfeitaria.util.response.EntidadeResponse;
-import br.se.oxeconfeitaria.util.response.ResponseUtil;
+import br.com.oxeconfeitaria.model.ResponseModel;
+import br.com.oxeconfeitaria.util.response.EntidadeResponse;
+import br.com.oxeconfeitaria.util.response.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

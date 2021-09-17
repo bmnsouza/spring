@@ -1,4 +1,4 @@
-package br.se.oxeconfeitaria.configuration;
+package br.com.oxeconfeitaria.configuration;
 
 import java.util.Locale;
 
@@ -8,7 +8,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 
-import br.se.oxeconfeitaria.util.response.ResponseUtil;
+import br.com.oxeconfeitaria.util.response.ResponseUtil;
 
 @Configuration
 public class ApplicationConfiguration {

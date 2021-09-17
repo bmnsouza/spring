@@ -8,7 +8,7 @@
 		<version>2.4.5</version>
 		<relativePath />
 	</parent>
-	<groupId>br.se.oxeconfeitaria</groupId>
+	<groupId>br.com.oxeconfeitaria</groupId>
 	<artifactId>oxeconfeitaria-spring-boot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>oxeconfeitaria-spring-boot</name>

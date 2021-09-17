@@ -1,15 +1,17 @@
-package br.se.oxeconfeitaria.camadas.service;
+package br.com.oxeconfeitaria.camadas.service;
 
 import org.springframework.http.ResponseEntity;
 
-import br.se.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Atualizacao;
-import br.se.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Cadastro;
-import br.se.oxeconfeitaria.exception.ServiceException;
-import br.se.oxeconfeitaria.util.response.EntidadeResponse;
+import br.com.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Atualizacao;
+import br.com.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Cadastro;
+import br.com.oxeconfeitaria.exception.ServiceException;
+import br.com.oxeconfeitaria.util.response.EntidadeResponse;
 
 public interface InsumoService {
 
 	ResponseEntity<EntidadeResponse> buscar(Integer idInsumo, String dsInsumo);
+	
+	ResponseEntity<EntidadeResponse> buscarNativeQuery(Integer idInsumo, String dsInsumo);
 	
 	ResponseEntity<EntidadeResponse> cadastrar(Cadastro cadastro);
 	
