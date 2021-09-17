@@ -1,3 +1,8 @@
 # Spring Boot Admin Server
 
-Projeto Spring Boot Admin Server para gerenciar e monitorar aplicativos Spring Boot
+Projeto para gerenciar e monitorar aplicações Spring Boot
+
+
+### Monitorar Aplicações
+
+- http://localhost:8089/applications
