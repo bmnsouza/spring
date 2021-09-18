@@ -76,7 +76,7 @@ public class InsumoServiceImpl implements InsumoService {
 		
 		// Verifica se o Insumo existe
 		Optional<Insumo> optional = insumoRepository.findById(atualizacao.getIdInsumo());
-		optional.orElseThrow(() -> new ServiceException("idInsumo", "Insumo não encontrado"));
+		optional.orElseThrow(() -> new ServiceException("Insumo não encontrado"));
 		
 		Insumo insumo = optional.get();
 		insumo.setDsInsumo(atualizacao.getDsInsumo());
@@ -95,7 +95,7 @@ public class InsumoServiceImpl implements InsumoService {
 		
 		// Verifica se o Insumo existe
 		Optional<Insumo> optional = insumoRepository.findById(idInsumo);
-		optional.orElseThrow(() -> new ServiceException("idInsumo", "Insumo não encontrado"));
+		optional.orElseThrow(() -> new ServiceException("Insumo não encontrado"));
 
 		insumoRepository.deleteById(idInsumo);
 		
