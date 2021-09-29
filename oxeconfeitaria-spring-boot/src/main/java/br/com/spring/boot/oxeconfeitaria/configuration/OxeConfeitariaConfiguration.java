@@ -50,7 +50,7 @@ public class OxeConfeitariaConfiguration {
 
 		return builder.dataSource(dataSource)
 				.properties(properties)
-				.packages("br.com.oxeconfeitaria.camadas.entity")
+				.packages("br.com.spring.boot.oxeconfeitaria.camadas.entity")
 				.persistenceUnit("oxeconfeitariaPU")
 				.build();
 	}
