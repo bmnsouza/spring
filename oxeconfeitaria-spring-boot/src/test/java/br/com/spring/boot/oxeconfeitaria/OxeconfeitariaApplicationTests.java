@@ -1,4 +1,4 @@
-package br.com.oxeconfeitaria;
+package br.com.spring.boot.oxeconfeitaria;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
