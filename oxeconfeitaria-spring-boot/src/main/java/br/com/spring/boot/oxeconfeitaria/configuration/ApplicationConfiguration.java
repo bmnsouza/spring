@@ -8,15 +8,8 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 
-import br.com.spring.boot.oxeconfeitaria.util.response.ResponseUtil;
-
 @Configuration
 public class ApplicationConfiguration {
-
-	@Bean
-	public ResponseUtil responseUtil() {
-		return new ResponseUtil();
-	}
 
 	@Bean
 	public LocaleResolver localeResolver() {

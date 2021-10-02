@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(
 	entityManagerFactoryRef = OxeConfeitariaConfiguration.ENTITY_MANAGER_FACTORY,
 	transactionManagerRef = OxeConfeitariaConfiguration.TRANSACTION_MANAGER,
-	basePackages = { "br.com.oxeconfeitaria.camadas.repository" }
+	basePackages = { "br.com.spring.boot.oxeconfeitaria.camadas.repository" }
 )
 public class OxeConfeitariaConfiguration {
 

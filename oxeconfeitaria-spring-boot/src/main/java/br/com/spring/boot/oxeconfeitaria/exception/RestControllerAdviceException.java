@@ -55,7 +55,6 @@ public class RestControllerAdviceException {
 	@Autowired
 	private ResponseUtil responseUtil;
 	
-	// Mensagens de erro
 	private static final String MSG_USUARIO_CAMPO_INVALIDO = "Requisição possui campo inválido";
 	private static final String MSG_USUARIO_ERRO = "Não foi possível realizar a operação";
 	
