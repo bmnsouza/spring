@@ -10,13 +10,11 @@ import br.com.spring.boot.oxeconfeitaria.util.response.EntidadeResponse.Response
 public class ResponseUtil {
 
 	public ResponseEntity<EntidadeResponse> responseSucesso(HttpStatus httpStatus, Object dados) {
-		EntidadeResponse entidadeResponse = entidadeResponse(null, "Operação realizada com sucesso", dados);
-		return ResponseEntity.status(httpStatus).body(entidadeResponse);
+		return ResponseEntity.status(httpStatus).body(entidadeResponse(null, "Operação realizada com sucesso", dados));
 	}
 
 	public ResponseEntity<EntidadeResponse> responseErro(HttpStatus httpStatus, String msgTecnica, String msgUsuario) {
-		EntidadeResponse entidadeResponse = entidadeResponse(msgTecnica, msgUsuario, null);
-		return ResponseEntity.status(httpStatus).body(entidadeResponse);
+		return ResponseEntity.status(httpStatus).body(entidadeResponse(msgTecnica, msgUsuario, null));
 	}
 
 	private EntidadeResponse entidadeResponse(String msgTecnica, String msgUsuario, Object dados) {
