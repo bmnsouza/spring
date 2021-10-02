@@ -7,10 +7,8 @@ import br.com.spring.boot.oxeconfeitaria.util.response.EntidadeResponse.Response
 
 public class ResponseUtil {
 
-	public static final String MSG_USUARIO_SUCESSO = "Operação realizada com sucesso";
-	
 	public ResponseEntity<EntidadeResponse> responseSucesso(HttpStatus httpStatus, Object dados) {
-		EntidadeResponse entidadeResponse = entidadeResponse("", MSG_USUARIO_SUCESSO, dados);
+		EntidadeResponse entidadeResponse = entidadeResponse(null, "Operação realizada com sucesso", dados);
 		return ResponseEntity.status(httpStatus).body(entidadeResponse);
 	}
 
