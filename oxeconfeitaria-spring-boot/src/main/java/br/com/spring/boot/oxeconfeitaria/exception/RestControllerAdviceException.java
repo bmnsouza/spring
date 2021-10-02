@@ -2,6 +2,7 @@ package br.com.spring.boot.oxeconfeitaria.exception;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.CONFLICT;
+import static org.springframework.http.HttpStatus.EXPECTATION_FAILED;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.METHOD_NOT_ALLOWED;
 import static org.springframework.http.HttpStatus.PAYLOAD_TOO_LARGE;
@@ -120,7 +121,7 @@ public class RestControllerAdviceException {
 	public ResponseEntity<EntidadeResponse> handleHttpMediaTypeNotSupported(HttpMediaTypeNotSupportedException hmtnse) {
 		StringBuilder msgUsuario = new StringBuilder("O tipo de mídia ").append(hmtnse.getContentType()).append(" não é suportado. Tipo de mídia suportado: ")
 				.append(hmtnse.getSupportedMediaTypes().get(0));
-		return responseUtil.responseErro(UNSUPPORTED_MEDIA_TYPE, null, msgUsuario.toString());
+		return responseUtil.responseErro(UNSUPPORTED_MEDIA_TYPE, hmtnse.toString(), msgUsuario.toString());
 	}
 
 	// Captura exceções do RequestBody
@@ -164,7 +165,7 @@ public class RestControllerAdviceException {
 	// Captura exceções de upload
 	@ExceptionHandler(MaxUploadSizeExceededException.class)
 	public ResponseEntity<EntidadeResponse> handleMaxUploadSizeExceeded(MaxUploadSizeExceededException musee) {
-		return responseUtil.responseErro(PAYLOAD_TOO_LARGE, musee.getMessage(), "Upload do arquivo excede o limite máximo permitido");
+		return responseUtil.responseErro(PAYLOAD_TOO_LARGE, musee.getMessage(), "Upload do arquivo excede o tamanho máximo permitido");
 	}
 	
 	// Captura exceções do RequestBody
@@ -193,7 +194,7 @@ public class RestControllerAdviceException {
 
 	@ExceptionHandler(MissingPathVariableException.class)
 	public ResponseEntity<EntidadeResponse> handleMissingPathVariable(MissingPathVariableException mpve) {
-		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, mpve.toString(), MSG_USUARIO_ERRO);
+		return responseUtil.responseErro(EXPECTATION_FAILED, mpve.toString(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(MissingServletRequestParameterException.class)
@@ -208,7 +209,7 @@ public class RestControllerAdviceException {
 	
 	@ExceptionHandler(ServiceException.class)
 	public ResponseEntity<EntidadeResponse> handleService(ServiceException se) {
-		return responseUtil.responseErro(BAD_REQUEST, null, se.getMessage());
+		return responseUtil.responseErro(BAD_REQUEST, se.toString(), se.getMessage());
 	}
 
 	@ExceptionHandler(ServletRequestBindingException.class)
