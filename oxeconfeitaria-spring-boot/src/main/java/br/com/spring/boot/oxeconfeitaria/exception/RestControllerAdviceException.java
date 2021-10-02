@@ -53,11 +53,11 @@ import lombok.extern.slf4j.Slf4j;
 @RestControllerAdvice
 public class RestControllerAdviceException {
 
+	public static final String MSG_USUARIO_CAMPO_INVALIDO = "Requisição possui campo inválido";
+	public static final String MSG_USUARIO_ERRO = "Não foi possível realizar a operação";
+
 	@Autowired
 	private ResponseUtil responseUtil;
-	
-	private static final String MSG_USUARIO_CAMPO_INVALIDO = "Requisição possui campo inválido";
-	private static final String MSG_USUARIO_ERRO = "Não foi possível realizar a operação";
 	
 	@ExceptionHandler(AsyncRequestTimeoutException.class)
 	public ResponseEntity<EntidadeResponse> handleAsyncRequestTimeout(AsyncRequestTimeoutException arte) {

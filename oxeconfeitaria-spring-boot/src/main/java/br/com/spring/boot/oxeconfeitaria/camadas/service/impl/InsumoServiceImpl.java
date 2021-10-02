@@ -87,7 +87,7 @@ public class InsumoServiceImpl implements InsumoService {
 		
 		insumoRepository.save(insumo);			
 	
-		return responseUtil.responseSucesso(OK, null);
+		return responseUtil.responseSucesso(OK);
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class InsumoServiceImpl implements InsumoService {
 
 		insumoRepository.deleteById(idInsumo);
 		
-		return responseUtil.responseSucesso(OK, null);
+		return responseUtil.responseSucesso(OK);
 	}
 
 }
