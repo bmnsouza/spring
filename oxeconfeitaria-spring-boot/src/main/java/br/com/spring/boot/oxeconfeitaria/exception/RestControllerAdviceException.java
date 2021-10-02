@@ -1,6 +1,5 @@
 package br.com.spring.boot.oxeconfeitaria.exception;
 
-import static br.com.spring.boot.oxeconfeitaria.util.response.ResponseUtil.MENSAGEM_ERRO;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.CONFLICT;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
@@ -55,42 +54,45 @@ public class RestControllerAdviceException {
 
 	@Autowired
 	private ResponseUtil responseUtil;
-
+	
+	// Mensagens de erro
+	private static final String MSG_USUARIO_CAMPO_INVALIDO = "Requisição possui campo inválido";
+	private static final String MSG_USUARIO_ERRO = "Não foi possível realizar a operação";
+	
 	@ExceptionHandler(AsyncRequestTimeoutException.class)
 	public ResponseEntity<EntidadeResponse> handleAsyncRequestTimeout(AsyncRequestTimeoutException arte) {
-		return responseUtil.responseErro(SERVICE_UNAVAILABLE, arte, "O tempo limite de resposta do servidor foi excedido. Tente novamente mais tarde.");
+		return responseUtil.responseErro(SERVICE_UNAVAILABLE, arte.toString(), "O tempo limite de resposta do servidor foi excedido. Tente novamente mais tarde");
 	}
 
 	@ExceptionHandler(BindException.class)
 	public ResponseEntity<EntidadeResponse> handleBind(BindException be) {
-		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, be, MENSAGEM_ERRO);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, be.toString(), MSG_USUARIO_ERRO);
 	}
 
 	// Captura exceções do RequestParam
 	@ExceptionHandler(ConstraintViolationException.class)
 	public ResponseEntity<EntidadeResponse> handleConstraintViolation(ConstraintViolationException cve) {
-		StringBuilder msgUsuario = new StringBuilder();
+		StringBuilder msgTecnica = new StringBuilder();
 		for (ConstraintViolation<?> violation : cve.getConstraintViolations()) {
-			msgUsuario.append(violation.getPropertyPath().toString().split("[.]")[1]).append(": ").append(violation.getMessage());
+			msgTecnica.append(violation.getPropertyPath().toString().split("[.]")[1]).append(": ").append(violation.getMessage());
 			break;
 		}
-		return responseUtil.resultErro(BAD_REQUEST, msgUsuario.toString());
+		return responseUtil.responseErro(BAD_REQUEST, msgTecnica.toString(), MSG_USUARIO_CAMPO_INVALIDO);
 	}
 
 	@ExceptionHandler(ConversionNotSupportedException.class)
 	public ResponseEntity<EntidadeResponse> handleConversionNotSupported(ConversionNotSupportedException cnse) {
-		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, cnse, MENSAGEM_ERRO);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, cnse.toString(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(DataAccessException.class)
 	public ResponseEntity<EntidadeResponse> handleDataAccess(DataAccessException dae) {
-		return responseUtil.responseErro(BAD_REQUEST, dae.getRootCause().getMessage(), MENSAGEM_ERRO);
+		return responseUtil.responseErro(BAD_REQUEST, dae.getRootCause().getMessage(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<EntidadeResponse> handleDataIntegrityViolation(DataIntegrityViolationException dive) {
-		return responseUtil.responseErro(CONFLICT, dive.getRootCause().getMessage(),
-				"Não foi possível realizar a operação porque as informações enviadas violam as restrições de integridade de dados");
+		return responseUtil.responseErro(CONFLICT, dive.getRootCause().getMessage(), "As informações enviadas violam as restrições de integridade de dados");
 	}
 
 	@ExceptionHandler(DateTimeException.class)
@@ -106,129 +108,129 @@ public class RestControllerAdviceException {
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<EntidadeResponse> handleException(Exception ex) {
-		log.error("handlerException", ex);
-		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, ex, MENSAGEM_ERRO);
+		log.error("handleException", ex);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, ex.toString(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(HttpMediaTypeNotAcceptableException.class)
 	public ResponseEntity<EntidadeResponse> handleHttpMediaTypeNotAcceptable(HttpMediaTypeNotAcceptableException hmtnae) {
-		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, hmtnae, MENSAGEM_ERRO);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, hmtnae.toString(), MSG_USUARIO_ERRO);
 	}
 	
 	@ExceptionHandler(HttpMediaTypeNotSupportedException.class)
 	public ResponseEntity<EntidadeResponse> handleHttpMediaTypeNotSupported(HttpMediaTypeNotSupportedException hmtnse) {
 		StringBuilder msgUsuario = new StringBuilder("O tipo de mídia ").append(hmtnse.getContentType()).append(" não é suportado. Tipo de mídia suportado: ")
 				.append(hmtnse.getSupportedMediaTypes().get(0));
-		return responseUtil.resultErro(UNSUPPORTED_MEDIA_TYPE, msgUsuario.toString());
+		return responseUtil.responseErro(UNSUPPORTED_MEDIA_TYPE, null, msgUsuario.toString());
 	}
 
 	// Captura exceções do RequestBody
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public ResponseEntity<EntidadeResponse> handleHttpMessageNotReadable(HttpMessageNotReadableException hmnre, JsonMappingException jme) throws Throwable {
-		StringBuilder msgUsuario = new StringBuilder(jme.getPath().get(0).getFieldName()).append(": ");
+		StringBuilder msgTecnica = new StringBuilder(jme.getPath().get(0).getFieldName()).append(": ");
 		
 		try {
 			throw hmnre.getRootCause();
 		} catch (DateTimeException dte) {
-			msgUsuario.append("data inválida");
+			msgTecnica.append("data inválida");
 		} catch (Exception ex) {
-			msgUsuario.append("valor inválido");
+			msgTecnica.append("valor inválido");
 		}
 		
-		return responseUtil.resultErro(BAD_REQUEST, msgUsuario.toString());
+		return responseUtil.responseErro(BAD_REQUEST, msgTecnica.toString(), MSG_USUARIO_CAMPO_INVALIDO);
 	}
 	
 	@ExceptionHandler(HttpMessageNotWritableException.class)
 	public ResponseEntity<EntidadeResponse> handleHttpMessageNotWritable(HttpMessageNotWritableException hmnwe) {
-		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, hmnwe, MENSAGEM_ERRO);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, hmnwe.toString(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
 	public ResponseEntity<EntidadeResponse> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException hrmnse) {
 		StringBuilder msgUsuario = new StringBuilder("O método ").append(hrmnse.getMethod()).append(" não é suportado para esta solicitação. Método suportado: ")
 				.append(hrmnse.getSupportedMethods()[0]);
-		return responseUtil.resultErro(METHOD_NOT_ALLOWED, msgUsuario.toString());
+		return responseUtil.responseErro(METHOD_NOT_ALLOWED, hrmnse.toString(), msgUsuario.toString());
 	}
 	
 	@ExceptionHandler(JsonMappingException.class)
 	public ResponseEntity<EntidadeResponse> handleJsonMapping(JsonMappingException jme) {
-		return responseUtil.responseErro(BAD_REQUEST, jme.getCause(), MENSAGEM_ERRO);
+		return responseUtil.responseErro(BAD_REQUEST, jme.getCause().toString(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(JsonProcessingException.class)
 	public ResponseEntity<EntidadeResponse> handleJsonProcessing(JsonProcessingException jpe) {
-		return responseUtil.responseErro(BAD_REQUEST, jpe.getCause(), MENSAGEM_ERRO);
+		return responseUtil.responseErro(BAD_REQUEST, jpe.getCause().toString(), MSG_USUARIO_ERRO);
 	}
 
 	// Captura exceções de upload
 	@ExceptionHandler(MaxUploadSizeExceededException.class)
 	public ResponseEntity<EntidadeResponse> handleMaxUploadSizeExceeded(MaxUploadSizeExceededException musee) {
-		return responseUtil.responseErro(PAYLOAD_TOO_LARGE, musee.getMessage(), "Arquivo maior que o permitido");
+		return responseUtil.responseErro(PAYLOAD_TOO_LARGE, musee.getMessage(), "Upload do arquivo excede o limite máximo permitido");
 	}
 	
 	// Captura exceções do RequestBody
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<EntidadeResponse> handleMethodArgumentNotValid(MethodArgumentNotValidException manve) {
-		StringBuilder msgUsuario = new StringBuilder(manve.getBindingResult().getFieldError().getField()).append(": ")
+		StringBuilder msgTecnica = new StringBuilder(manve.getBindingResult().getFieldError().getField()).append(": ")
 				.append(manve.getBindingResult().getFieldErrors().get(0).getDefaultMessage());
-		return responseUtil.resultErro(BAD_REQUEST, msgUsuario.toString());
+		return responseUtil.responseErro(BAD_REQUEST, msgTecnica.toString(), MSG_USUARIO_CAMPO_INVALIDO);
 	}
 
 	// Captura exceções do RequestParam
 	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
 	public ResponseEntity<EntidadeResponse> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException matme) throws Throwable {
-		StringBuilder msgUsuario = new StringBuilder(matme.getName()).append(": ");
+		StringBuilder msgTecnica = new StringBuilder(matme.getName()).append(": ");
 
 		try {
 			throw matme.getRootCause();
 		} catch (DateTimeException dte) {
-			msgUsuario.append("data inválida");
+			msgTecnica.append("data inválida");
 		} catch (Exception ex) {
-			msgUsuario.append("deve ser do tipo ").append(matme.getRequiredType().getName());
+			msgTecnica.append("deve ser do tipo ").append(matme.getRequiredType().getName());
 		}
 		
-		return responseUtil.resultErro(BAD_REQUEST, msgUsuario.toString());
+		return responseUtil.responseErro(BAD_REQUEST, msgTecnica.toString(), MSG_USUARIO_CAMPO_INVALIDO);
 	}
 
 	@ExceptionHandler(MissingPathVariableException.class)
 	public ResponseEntity<EntidadeResponse> handleMissingPathVariable(MissingPathVariableException mpve) {
-		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, mpve, MENSAGEM_ERRO);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, mpve.toString(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(MissingServletRequestParameterException.class)
 	public ResponseEntity<EntidadeResponse> handleMissingServletRequestParameter(MissingServletRequestParameterException msrpe) {
-		return responseUtil.resultErro(BAD_REQUEST, new StringBuilder(msrpe.getParameterName()).append(": parâmetro não encontrado").toString());
+		return responseUtil.responseErro(BAD_REQUEST, new StringBuilder(msrpe.getParameterName()).append(": parâmetro não encontrado").toString(), MSG_USUARIO_CAMPO_INVALIDO);
 	}
 	
 	@ExceptionHandler(MissingServletRequestPartException.class)
 	public ResponseEntity<EntidadeResponse> handleMissingServletRequestPart(MissingServletRequestPartException msrpe) {
-		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, msrpe, MENSAGEM_ERRO);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, msrpe.toString(), MSG_USUARIO_ERRO);
 	}
 	
 	@ExceptionHandler(ServiceException.class)
 	public ResponseEntity<EntidadeResponse> handleService(ServiceException se) {
-		return responseUtil.resultErro(BAD_REQUEST, se.getMessage());
+		return responseUtil.responseErro(BAD_REQUEST, null, se.getMessage());
 	}
 
 	@ExceptionHandler(ServletRequestBindingException.class)
 	public ResponseEntity<EntidadeResponse> handleServletRequestBinding(ServletRequestBindingException srbe) {
-		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, srbe, MENSAGEM_ERRO);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, srbe.toString(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(TypeMismatchException.class)
 	public ResponseEntity<EntidadeResponse> handleTypeMismatch(TypeMismatchException tme) {
-		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, tme, MENSAGEM_ERRO);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, tme.toString(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(UndeclaredThrowableException.class)
 	public ResponseEntity<EntidadeResponse> handleUndeclaredThrowable(UndeclaredThrowableException ute) {
-		return responseUtil.responseErro(BAD_REQUEST, ute.getCause(), MENSAGEM_ERRO);
+		return responseUtil.responseErro(BAD_REQUEST, ute.getCause().toString(), MSG_USUARIO_ERRO);
 	}
 
 	// Captura exceções do WebClientResquest
 	@ExceptionHandler(WebClientRequestException.class)
 	public ResponseEntity<EntidadeResponse> handleWebClientRequest(WebClientRequestException wcre) throws JsonMappingException, JsonProcessingException {
-		return responseUtil.responseErro(SERVICE_UNAVAILABLE, wcre.getMessage(), MENSAGEM_ERRO);
+		return responseUtil.responseErro(SERVICE_UNAVAILABLE, wcre.getMessage(), MSG_USUARIO_ERRO);
 	}
 	
 	// Captura exceções do WebClientResponse
@@ -240,7 +242,7 @@ public class RestControllerAdviceException {
 			ResponseModel resultModel = ResponseModel.readValue(wcre.getResponseBodyAsString(), ResponseModel.class);
 			responseEntity = new ResponseEntity<ResponseModel>(resultModel, wcre.getStatusCode());
 		} catch (Exception ex) {
-			responseEntity = responseUtil.responseErro(wcre.getStatusCode(), wcre.getMessage(), MENSAGEM_ERRO);
+			responseEntity = responseUtil.responseErro(wcre.getStatusCode(), wcre.getMessage(), MSG_USUARIO_ERRO);
 		}
 		
 		return responseEntity;

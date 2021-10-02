@@ -1,6 +1,6 @@
 package br.com.spring.boot.oxeconfeitaria.camadas.service.impl;
 
-import static br.com.spring.boot.oxeconfeitaria.util.response.ResponseUtil.MENSAGEM_OK;
+import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
 import java.time.LocalDate;
@@ -44,13 +44,13 @@ public class InsumoServiceImpl implements InsumoService {
 			dados = insumoRepository.findAll(Sort.by(Sort.Direction.ASC, "dsInsumo"));
 		}
 		
-		return responseUtil.responseSucesso(OK, MENSAGEM_OK, dados);
+		return responseUtil.responseSucesso(OK, dados);
 	}
 	
 	@Override
 	public ResponseEntity<EntidadeResponse> buscarNativeQuery(Integer idInsumo, String dsInsumo) {
 		List<Insumo> dados = insumoRepository.buscarNativeQuery(idInsumo, dsInsumo);
-		return responseUtil.responseSucesso(OK, MENSAGEM_OK, dados);
+		return responseUtil.responseSucesso(OK, dados);
 	}
 	
 	@Override
@@ -68,7 +68,7 @@ public class InsumoServiceImpl implements InsumoService {
 		Map<String, Integer> dados = new HashMap<>();
 		dados.put("idInsumo", insumo.getIdInsumo());
 		
-		return responseUtil.responseSucesso(OK, MENSAGEM_OK, dados);
+		return responseUtil.responseSucesso(CREATED, dados);
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class InsumoServiceImpl implements InsumoService {
 		
 		insumoRepository.save(insumo);			
 	
-		return responseUtil.responseSucesso(OK, MENSAGEM_OK);
+		return responseUtil.responseSucesso(OK, null);
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class InsumoServiceImpl implements InsumoService {
 
 		insumoRepository.deleteById(idInsumo);
 		
-		return responseUtil.responseSucesso(OK, MENSAGEM_OK);
+		return responseUtil.responseSucesso(OK, null);
 	}
 
 }
