@@ -8,7 +8,7 @@
 		<version>2.4.5</version>
 		<relativePath />
 	</parent>
-	<groupId>br.gov.se.sefaz</groupId>
+	<groupId>br.com.spring.boot.admin</groupId>
 	<artifactId>spring-boot-admin-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-boot-admin-server</name>
