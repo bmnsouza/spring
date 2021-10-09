@@ -107,9 +107,9 @@ public class RestControllerAdviceException {
 	}
 
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<EntidadeResponse> handleException(Exception ex) {
-		log.error("handleException", ex);
-		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, ex.toString(), MSG_USUARIO_ERRO);
+	public ResponseEntity<EntidadeResponse> handleException(Exception e) {
+		log.error("handleException", e);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, e.toString(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(HttpMediaTypeNotAcceptableException.class)
@@ -133,7 +133,7 @@ public class RestControllerAdviceException {
 			throw hmnre.getRootCause();
 		} catch (DateTimeException dte) {
 			msgTecnica.append("data inválida");
-		} catch (Exception ex) {
+		} catch (Exception e) {
 			msgTecnica.append("valor inválido");
 		}
 		
@@ -185,7 +185,7 @@ public class RestControllerAdviceException {
 			throw matme.getRootCause();
 		} catch (DateTimeException dte) {
 			msgTecnica.append("data inválida");
-		} catch (Exception ex) {
+		} catch (Exception e) {
 			msgTecnica.append("deve ser do tipo ").append(matme.getRequiredType().getName());
 		}
 		
@@ -241,7 +241,7 @@ public class RestControllerAdviceException {
 		try {
 			ResponseModel resultModel = ResponseModel.readValue(wcre.getResponseBodyAsString(), ResponseModel.class);
 			responseEntity = new ResponseEntity<ResponseModel>(resultModel, wcre.getStatusCode());
-		} catch (Exception ex) {
+		} catch (Exception e) {
 			responseEntity = responseUtil.responseErro(wcre.getStatusCode(), wcre.getMessage(), MSG_USUARIO_ERRO);
 		}
 		

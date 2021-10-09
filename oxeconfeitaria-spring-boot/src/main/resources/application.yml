@@ -51,6 +51,29 @@ project:
   version: ^project.version^
 
 
+# resilience4j
+resilience4j:
+  # retry
+  retry:
+    instances:
+      backendA:
+        max-attempts: 3
+        wait-duration: 5000
+  # circuit breaker
+  circuitbreaker:
+    instances:
+      backendA:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        waitDurationInOpenState: 5s
+        slidingWindowType: count-based
+
+
 # server
 server:
   port: 8080
@@ -71,6 +94,11 @@ spring:
         instance:
           prefer-ip: true 
         url: http://localhost:8089
+  cache:
+    type: simple
+  redis:
+    host: localhost
+    port: 6379  
   data:
     web:
       pageable:

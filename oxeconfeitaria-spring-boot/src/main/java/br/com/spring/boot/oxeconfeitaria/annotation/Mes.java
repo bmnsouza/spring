@@ -39,7 +39,7 @@ class MesValidator implements ConstraintValidator<Mes, Integer> {
 		if (mes != null) {
 			try {
 				LocalDate.of(LocalDate.now().getYear(), mes, 1);
-			} catch (Exception ex) {
+			} catch (Exception e) {
 				isValid = false;
 			}			
 		}

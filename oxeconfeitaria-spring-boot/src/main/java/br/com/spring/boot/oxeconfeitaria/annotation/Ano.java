@@ -43,7 +43,7 @@ class AnoValidator implements ConstraintValidator<Ano, Integer> {
 			} else {
 				try {
 					LocalDate.of(ano, LocalDate.now().getMonthValue(), 1);
-				} catch (Exception ex) {
+				} catch (Exception e) {
 					isValid = false;
 				}
 			}
