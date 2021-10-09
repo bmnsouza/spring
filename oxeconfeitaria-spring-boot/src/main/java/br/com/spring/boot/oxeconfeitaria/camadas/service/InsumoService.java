@@ -4,8 +4,8 @@ import org.springframework.http.ResponseEntity;
 
 import br.com.spring.boot.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Atualizacao;
 import br.com.spring.boot.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Cadastro;
-import br.com.spring.boot.oxeconfeitaria.exception.ServiceException;
-import br.com.spring.boot.oxeconfeitaria.util.response.EntidadeResponse;
+import br.com.spring.boot.projeto.base.exception.ServiceException;
+import br.com.spring.boot.projeto.base.util.response.EntidadeResponse;
 
 public interface InsumoService {
 

@@ -8,6 +8,9 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 
+import br.com.spring.boot.projeto.base.util.WebClientUtil;
+import br.com.spring.boot.projeto.base.util.response.ResponseUtil;
+
 @Configuration
 public class ApplicationConfiguration {
 
@@ -22,6 +25,16 @@ public class ApplicationConfiguration {
 		characterEncodingFilter.setEncoding("UTF-8");
 		characterEncodingFilter.setForceEncoding(true);
 		return characterEncodingFilter;
+	}
+
+	@Bean
+	public ResponseUtil responseUtil() {
+		return new ResponseUtil();
+	}
+
+	@Bean
+	public WebClientUtil webClientUtil() {
+		return new WebClientUtil();
 	}
 
 }

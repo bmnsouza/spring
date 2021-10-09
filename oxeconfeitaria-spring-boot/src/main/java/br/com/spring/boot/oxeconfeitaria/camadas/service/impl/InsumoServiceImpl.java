@@ -19,9 +19,9 @@ import br.com.spring.boot.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.At
 import br.com.spring.boot.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Cadastro;
 import br.com.spring.boot.oxeconfeitaria.camadas.repository.InsumoRepository;
 import br.com.spring.boot.oxeconfeitaria.camadas.service.InsumoService;
-import br.com.spring.boot.oxeconfeitaria.exception.ServiceException;
-import br.com.spring.boot.oxeconfeitaria.util.response.EntidadeResponse;
-import br.com.spring.boot.oxeconfeitaria.util.response.ResponseUtil;
+import br.com.spring.boot.projeto.base.exception.ServiceException;
+import br.com.spring.boot.projeto.base.util.response.EntidadeResponse;
+import br.com.spring.boot.projeto.base.util.response.ResponseUtil;
 
 @Service
 public class InsumoServiceImpl implements InsumoService {
