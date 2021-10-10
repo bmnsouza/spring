@@ -1,4 +1,4 @@
-package br.com.boot.spring.oxeconfeitaria.configuration;
+package br.com.boot.spring.biblioteca.configuration;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,20 +23,20 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-	entityManagerFactoryRef = OxeConfeitariaConfiguration.ENTITY_MANAGER_FACTORY,
-	transactionManagerRef = OxeConfeitariaConfiguration.TRANSACTION_MANAGER,
-	basePackages = { "br.com.boot.spring.oxeconfeitaria.camadas.repository" }
+	entityManagerFactoryRef = BibliotecaConfiguration.ENTITY_MANAGER_FACTORY,
+	transactionManagerRef = BibliotecaConfiguration.TRANSACTION_MANAGER,
+	basePackages = { "br.com.boot.spring.biblioteca.camadas.repository" }
 )
-public class OxeConfeitariaConfiguration {
+public class BibliotecaConfiguration {
 
 	// Constantes
-	public static final String DATA_SOURCE = "oxeconfeitariaDataSource";
-	public static final String ENTITY_MANAGER_FACTORY = "oxeconfeitariaEntityManagerFactory";
-	public static final String TRANSACTION_MANAGER = "oxeconfeitariaTransactionManager";
+	public static final String DATA_SOURCE = "bibliotecaDataSource";
+	public static final String ENTITY_MANAGER_FACTORY = "bibliotecaEntityManagerFactory";
+	public static final String TRANSACTION_MANAGER = "bibliotecaTransactionManager";
 
 	@Primary
 	@Bean(DATA_SOURCE)
-	@ConfigurationProperties(prefix = "oxeconfeitaria.datasource")
+	@ConfigurationProperties(prefix = "biblioteca.datasource")
 	public DataSource dataSource() {
 		TimeZone.setDefault(TimeZone.getTimeZone("GMT-3"));
 		return DataSourceBuilder.create().build();
@@ -50,8 +50,8 @@ public class OxeConfeitariaConfiguration {
 
 		return builder.dataSource(dataSource)
 				.properties(properties)
-				.packages("br.com.boot.spring.oxeconfeitaria.camadas.entity")
-				.persistenceUnit("oxeconfeitariaPU")
+				.packages("br.com.boot.spring.biblioteca.camadas.entity")
+				.persistenceUnit("bibliotecaPU")
 				.build();
 	}
 	

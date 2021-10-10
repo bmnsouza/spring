@@ -1,0 +1,24 @@
+{
+	"properties": [
+		{
+			"name": "database-biblioteca.datasource.jdbc-url",
+			"type": "java.lang.String",
+			"description": "jdbc-url do banco de dados biblioteca"
+		},
+		{
+			"name": "database-biblioteca.datasource.username",
+			"type": "java.lang.String",
+			"description": "username do banco de dados biblioteca"
+		},
+		{
+			"name": "database-biblioteca.datasource.password",
+			"type": "java.lang.String",
+			"description": "password do banco de dados biblioteca"
+		},
+		{
+			"name": "project.version",
+			"type": "java.lang.String",
+			"description": "Versão do projeto"
+		}
+	]
+}

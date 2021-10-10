@@ -1,19 +1,19 @@
 {
 	"properties": [
 		{
-			"name": "oxeconfeitaria.datasource.jdbc-url",
+			"name": "database-oxeconfeitaria.datasource.jdbc-url",
 			"type": "java.lang.String",
-			"description": "jdbc-url do banco de dados oxeConfeitaria"
+			"description": "jdbc-url do banco de dados oxeconfeitaria"
 		},
 		{
-			"name": "oxeconfeitaria.datasource.username",
+			"name": "database-oxeconfeitaria.datasource.username",
 			"type": "java.lang.String",
-			"description": "username do banco de dados oxeConfeitaria"
+			"description": "username do banco de dados oxeconfeitaria"
 		},
 		{
-			"name": "oxeconfeitaria.datasource.password",
+			"name": "database-oxeconfeitaria.datasource.password",
 			"type": "java.lang.String",
-			"description": "password do banco de dados oxeConfeitaria"
+			"description": "password do banco de dados oxeconfeitaria"
 		},
 		{
 			"name": "project.version",

@@ -1,4 +1,4 @@
-package br.com.boot.spring.oxeconfeitaria.configuration;
+package br.com.boot.spring.biblioteca.configuration;
 
 import static br.com.boot.spring.base.util.DataUtil.DDMMAAAA_BARRA;
 import static br.com.boot.spring.base.util.DataUtil.DDMMAAAA_HHMMSS_BARRA;
@@ -29,7 +29,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 @Configuration
 public class DataConfiguration {
 
-	@PersistenceContext(unitName = OxeconfeitariaConfiguration.ENTITY_MANAGER_FACTORY)
+	@PersistenceContext(unitName = BibliotecaConfiguration.ENTITY_MANAGER_FACTORY)
 	private EntityManager fazendarioEntityManager;
 	
 	@Bean

@@ -37,6 +37,7 @@
 		    <version>2.5.1</version>
 		</dependency>
 	</dependencies>
+
 	<build>
 		<resources>
     		<resource>
@@ -60,4 +61,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
