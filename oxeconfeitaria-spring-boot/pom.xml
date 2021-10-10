@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.5</version>
+		<version>2.5.5</version>
 		<relativePath />
 	</parent>
 	<groupId>br.com.spring.boot.oxeconfeitaria</groupId>
@@ -78,19 +78,6 @@
 		    <groupId>de.codecentric</groupId>
 		    <artifactId>spring-boot-admin-starter-client</artifactId>
 		    <version>2.5.1</version>
-		</dependency>
-		<dependency>
-			<groupId>io.github.resilience4j</groupId>
-			<artifactId>resilience4j-spring-boot2</artifactId>
-			<version>1.7.0</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-data-redis</artifactId>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
 	</dependencies>
 	<build>
