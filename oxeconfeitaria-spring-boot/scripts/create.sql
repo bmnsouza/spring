@@ -7,7 +7,7 @@ CREATE TABLE public.insumo
     vlpreco double precision NOT NULL,
     dtcadastro date NOT NULL,
     dtatualizacao date,
-    CONSTRAINT insumo_pkey PRIMARY KEY (idinsumo)
+    CONSTRAINT insumo_pk PRIMARY KEY (idinsumo)
 )
 
 TABLESPACE pg_default;
