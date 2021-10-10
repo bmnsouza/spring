@@ -1,10 +1,8 @@
-package br.com.spring.boot.oxeconfeitaria;
+package br.com.boot.spring.oxeconfeitaria;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 
-@EnableCaching
 @SpringBootApplication
 public class OxeconfeitariaApplication {
 

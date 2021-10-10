@@ -1,4 +1,4 @@
-package br.com.spring.boot.projeto.base.exception;
+package br.com.boot.spring.base.exception;
 
 public class ServiceException extends Exception {
 

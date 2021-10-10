@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.5</version>
+		<version>2.5.5</version>
 		<relativePath />
 	</parent>
-	<groupId>br.com.spring.boot.projeto.base</groupId>
-	<artifactId>projeto-base</artifactId>
+	<groupId>br.com.boot.spring.base</groupId>
+	<artifactId>base</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sefaz-corporativo</name>
-	<description>Projeto Base project for Spring Boot</description>
+	<name>base-spring-boot</name>
+	<description>Base project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

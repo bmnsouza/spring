@@ -1,4 +1,4 @@
-package br.com.spring.boot.projeto.base.annotation;
+package br.com.boot.spring.base.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 import org.springframework.http.MediaType;
 
-import br.com.spring.boot.projeto.base.util.response.EntidadeResponse;
+import br.com.boot.spring.base.util.response.EntidadeResponse;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

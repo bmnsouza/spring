@@ -1,10 +1,10 @@
-package br.com.spring.boot.projeto.base.util;
+package br.com.boot.spring.base.util;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 import org.springframework.web.reactive.function.client.WebClient;
 
-import br.com.spring.boot.projeto.base.model.TokenModel;
+import br.com.boot.spring.base.model.TokenModel;
 
 public class WebClientUtil {
 	

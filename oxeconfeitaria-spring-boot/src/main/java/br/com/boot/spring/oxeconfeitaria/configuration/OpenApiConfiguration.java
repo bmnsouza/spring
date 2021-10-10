@@ -1,4 +1,4 @@
-package br.com.spring.boot.oxeconfeitaria.configuration;
+package br.com.boot.spring.oxeconfeitaria.configuration;
 
 import org.springdoc.core.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Value;

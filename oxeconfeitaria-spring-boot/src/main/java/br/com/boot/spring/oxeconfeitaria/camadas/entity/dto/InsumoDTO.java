@@ -1,4 +1,4 @@
-package br.com.spring.boot.oxeconfeitaria.camadas.entity.dto;
+package br.com.boot.spring.oxeconfeitaria.camadas.entity.dto;
 
 import java.math.BigDecimal;
 

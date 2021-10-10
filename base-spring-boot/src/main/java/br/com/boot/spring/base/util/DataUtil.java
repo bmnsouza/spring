@@ -1,4 +1,4 @@
-package br.com.spring.boot.projeto.base.util;
+package br.com.boot.spring.base.util;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

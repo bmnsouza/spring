@@ -1,10 +1,10 @@
-package br.com.spring.boot.projeto.base.util.response;
+package br.com.boot.spring.base.util.response;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import br.com.spring.boot.projeto.base.util.response.EntidadeResponse.Response;
+import br.com.boot.spring.base.util.response.EntidadeResponse.Response;
 
 @Component
 public class ResponseUtil {

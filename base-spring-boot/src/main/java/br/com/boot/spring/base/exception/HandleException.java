@@ -1,4 +1,4 @@
-package br.com.spring.boot.projeto.base.exception;
+package br.com.boot.spring.base.exception;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.CONFLICT;
@@ -43,9 +43,9 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-import br.com.spring.boot.projeto.base.model.ResponseModel;
-import br.com.spring.boot.projeto.base.util.response.EntidadeResponse;
-import br.com.spring.boot.projeto.base.util.response.ResponseUtil;
+import br.com.boot.spring.base.model.ResponseModel;
+import br.com.boot.spring.base.util.response.EntidadeResponse;
+import br.com.boot.spring.base.util.response.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 
 /**

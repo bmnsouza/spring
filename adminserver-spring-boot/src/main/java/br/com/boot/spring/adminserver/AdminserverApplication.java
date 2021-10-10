@@ -1,4 +1,4 @@
-package br.com.spring.boot.admin;
+package br.com.boot.spring.adminserver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -6,10 +6,10 @@ import de.codecentric.boot.admin.server.config.EnableAdminServer;
 
 @EnableAdminServer
 @SpringBootApplication
-public class SpringBootAdminServerApplication {
+public class AdminserverApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootAdminServerApplication.class, args);
+        SpringApplication.run(AdminserverApplication.class, args);
     }
 
 }

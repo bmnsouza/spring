@@ -8,8 +8,8 @@
 		<version>2.5.5</version>
 		<relativePath />
 	</parent>
-	<groupId>br.com.spring.boot.oxeconfeitaria</groupId>
-	<artifactId>oxeconfeitaria-spring-boot</artifactId>
+	<groupId>br.com.boot.spring.oxeconfeitaria</groupId>
+	<artifactId>oxeconfeitaria</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>oxeconfeitaria-spring-boot</name>
 	<description>Ôxe Confeitaria project for Spring Boot</description>

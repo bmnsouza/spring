@@ -1,4 +1,4 @@
-package br.com.spring.boot.oxeconfeitaria.camadas.repository;
+package br.com.boot.spring.oxeconfeitaria.camadas.repository;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import br.com.spring.boot.oxeconfeitaria.camadas.entity.Insumo;
+import br.com.boot.spring.oxeconfeitaria.camadas.entity.Insumo;
 
 @Repository
 public interface InsumoRepository extends JpaRepository<Insumo, Integer> {

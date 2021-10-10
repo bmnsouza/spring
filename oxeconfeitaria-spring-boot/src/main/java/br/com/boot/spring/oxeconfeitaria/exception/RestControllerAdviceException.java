@@ -1,8 +1,8 @@
-package br.com.spring.boot.oxeconfeitaria.exception;
+package br.com.boot.spring.oxeconfeitaria.exception;
 
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import br.com.spring.boot.projeto.base.exception.HandleException;
+import br.com.boot.spring.base.exception.HandleException;
 
 /**
  * Herda da classe {@link HandlerException} que possui os tratamentos de exceções para todos os projetos.

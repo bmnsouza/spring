@@ -1,4 +1,4 @@
-package br.com.spring.boot.oxeconfeitaria.camadas.entity;
+package br.com.boot.spring.oxeconfeitaria.camadas.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

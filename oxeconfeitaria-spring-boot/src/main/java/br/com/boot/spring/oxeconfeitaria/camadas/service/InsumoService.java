@@ -1,11 +1,11 @@
-package br.com.spring.boot.oxeconfeitaria.camadas.service;
+package br.com.boot.spring.oxeconfeitaria.camadas.service;
 
 import org.springframework.http.ResponseEntity;
 
-import br.com.spring.boot.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Atualizacao;
-import br.com.spring.boot.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Cadastro;
-import br.com.spring.boot.projeto.base.exception.ServiceException;
-import br.com.spring.boot.projeto.base.util.response.EntidadeResponse;
+import br.com.boot.spring.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Atualizacao;
+import br.com.boot.spring.oxeconfeitaria.camadas.entity.dto.InsumoDTO.Request.Cadastro;
+import br.com.boot.spring.base.exception.ServiceException;
+import br.com.boot.spring.base.util.response.EntidadeResponse;
 
 public interface InsumoService {
 

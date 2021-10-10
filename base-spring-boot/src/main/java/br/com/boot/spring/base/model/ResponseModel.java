@@ -1,4 +1,4 @@
-package br.com.spring.boot.projeto.base.model;
+package br.com.boot.spring.base.model;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;

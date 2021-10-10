@@ -1,4 +1,4 @@
-package br.com.spring.boot.projeto.base.util.response;
+package br.com.boot.spring.base.util.response;
 
 import java.util.HashMap;
 

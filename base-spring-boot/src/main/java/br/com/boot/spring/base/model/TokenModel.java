@@ -1,4 +1,4 @@
-package br.com.spring.boot.projeto.base.model;
+package br.com.boot.spring.base.model;
 
 import lombok.Getter;
 

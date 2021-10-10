@@ -1,4 +1,4 @@
-package br.com.spring.boot.oxeconfeitaria.configuration;
+package br.com.boot.spring.oxeconfeitaria.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

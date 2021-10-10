@@ -1,8 +1,8 @@
-package br.com.spring.boot.oxeconfeitaria.configuration;
+package br.com.boot.spring.oxeconfeitaria.configuration;
 
-import static br.com.spring.boot.projeto.base.util.DataUtil.DDMMAAAA_BARRA;
-import static br.com.spring.boot.projeto.base.util.DataUtil.DDMMAAAA_HHMMSS_BARRA;
-import static br.com.spring.boot.projeto.base.util.DataUtil.HHMMSS_DOIS_PONTOS;
+import static br.com.boot.spring.base.util.DataUtil.DDMMAAAA_BARRA;
+import static br.com.boot.spring.base.util.DataUtil.DDMMAAAA_HHMMSS_BARRA;
+import static br.com.boot.spring.base.util.DataUtil.HHMMSS_DOIS_PONTOS;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

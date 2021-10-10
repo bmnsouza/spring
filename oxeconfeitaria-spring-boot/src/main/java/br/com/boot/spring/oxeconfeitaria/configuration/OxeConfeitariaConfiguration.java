@@ -1,4 +1,4 @@
-package br.com.spring.boot.oxeconfeitaria.configuration;
+package br.com.boot.spring.oxeconfeitaria.configuration;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(
 	entityManagerFactoryRef = OxeConfeitariaConfiguration.ENTITY_MANAGER_FACTORY,
 	transactionManagerRef = OxeConfeitariaConfiguration.TRANSACTION_MANAGER,
-	basePackages = { "br.com.spring.boot.oxeconfeitaria.camadas.repository" }
+	basePackages = { "br.com.boot.spring.oxeconfeitaria.camadas.repository" }
 )
 public class OxeConfeitariaConfiguration {
 
@@ -50,7 +50,7 @@ public class OxeConfeitariaConfiguration {
 
 		return builder.dataSource(dataSource)
 				.properties(properties)
-				.packages("br.com.spring.boot.oxeconfeitaria.camadas.entity")
+				.packages("br.com.boot.spring.oxeconfeitaria.camadas.entity")
 				.persistenceUnit("oxeconfeitariaPU")
 				.build();
 	}
