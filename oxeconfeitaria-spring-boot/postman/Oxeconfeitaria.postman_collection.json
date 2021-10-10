@@ -26,7 +26,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/api/oxeconfeitaria/v1/insumo/buscar?idInsumo=98",
+							"raw": "{{base_url}}/api/oxeconfeitaria/v1/insumo/buscar?idInsumo=99&dsInsumo=açúcar",
 							"host": [
 								"{{base_url}}"
 							],
@@ -40,12 +40,11 @@
 							"query": [
 								{
 									"key": "idInsumo",
-									"value": "98"
+									"value": "99"
 								},
 								{
 									"key": "dsInsumo",
-									"value": "Teste",
-									"disabled": true
+									"value": "açúcar"
 								}
 							]
 						}
@@ -70,7 +69,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/api/oxeconfeitaria/v1/insumo/buscarNativeQuery?idInsumo=98",
+							"raw": "{{base_url}}/api/oxeconfeitaria/v1/insumo/buscarNativeQuery?idInsumo=2&dsInsumo=açúcar",
 							"host": [
 								"{{base_url}}"
 							],
@@ -84,12 +83,11 @@
 							"query": [
 								{
 									"key": "idInsumo",
-									"value": "98"
+									"value": "2"
 								},
 								{
 									"key": "dsInsumo",
-									"value": "AÇÚCAR",
-									"disabled": true
+									"value": "açúcar"
 								}
 							]
 						}
@@ -162,7 +160,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/oxeconfeitaria/v1/insumo/excluir?idInsumo=101",
+							"raw": "{{base_url}}/api/oxeconfeitaria/v1/insumo/excluir?idInsumo=102",
 							"host": [
 								"{{base_url}}"
 							],
@@ -176,7 +174,7 @@
 							"query": [
 								{
 									"key": "idInsumo",
-									"value": "101"
+									"value": "102"
 								}
 							]
 						}
