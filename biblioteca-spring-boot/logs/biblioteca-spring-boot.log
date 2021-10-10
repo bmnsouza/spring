@@ -74,3 +74,113 @@ java.lang.IllegalArgumentException: dataSource or dataSourceClassName or jdbcUrl
 2021-10-10 11:18:27.434  WARN 12560 --- [registrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Failed to register application as Application(name=biblioteca-spring-boot, managementUrl=http://192.168.0.142:8081/api/biblioteca/actuator, healthUrl=http://192.168.0.142:8081/api/biblioteca/actuator/health, serviceUrl=http://192.168.0.142:8081/api/biblioteca) at spring-boot-admin ([http://localhost:8089/instances]): I/O error on POST request for "http://localhost:8089/instances": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect. Further attempts are logged on DEBUG level
 2021-10-10 11:18:48.978  INFO 12560 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
 2021-10-10 11:18:49.156  INFO 12560 --- [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'bibliotecaPU'
+2021-10-10 11:21:17.104  INFO 13080 --- [restartedMain] b.c.b.s.b.BibliotecaApplication          : Starting BibliotecaApplication using Java 1.8.0_291 on LAPTOP-H2FK604K with PID 13080 (C:\Users\bmnso\workspace\spring\biblioteca-spring-boot\target\classes started by bmnso in C:\Users\bmnso\workspace\spring\biblioteca-spring-boot)
+2021-10-10 11:21:17.106  INFO 13080 --- [restartedMain] b.c.b.s.b.BibliotecaApplication          : No active profile set, falling back to default profiles: default
+2021-10-10 11:21:17.136  INFO 13080 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-10-10 11:21:17.136  INFO 13080 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-10-10 11:21:17.601  INFO 13080 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-10-10 11:21:17.694  INFO 13080 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88 ms. Found 1 JPA repository interfaces.
+2021-10-10 11:21:18.319  INFO 13080 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2021-10-10 11:21:18.326  INFO 13080 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-10-10 11:21:18.327  INFO 13080 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-10 11:21:18.381  INFO 13080 --- [restartedMain] o.a.c.c.C.[.[.[/api/biblioteca]          : Initializing Spring embedded WebApplicationContext
+2021-10-10 11:21:18.381  INFO 13080 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1244 ms
+2021-10-10 11:21:18.530  WARN 13080 --- [restartedMain] o.s.o.j.p.DefaultPersistenceUnitManager  : Found explicit default persistence unit with name 'bibliotecaPU' in persistence.xml - overriding local default persistence unit settings ('packagesToScan'/'mappingResources')
+2021-10-10 11:21:18.543  INFO 13080 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: bibliotecaPU]
+2021-10-10 11:21:18.582  INFO 13080 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-10 11:21:18.672  INFO 13080 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-10 11:21:18.892  WARN 13080 --- [restartedMain] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+
+java.lang.IllegalArgumentException: dataSource or dataSourceClassName or jdbcUrl is required.
+	at com.zaxxer.hikari.HikariConfig.validate(HikariConfig.java:1029) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:109) ~[HikariCP-4.0.3.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:180) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:176) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:127) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1224) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1255) [hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) [spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) [spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) [spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) [spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) [spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.10.jar:5.3.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.10.jar:5.3.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.10.jar:5.3.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) ~[spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:338) ~[spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332) ~[spring-boot-2.5.5.jar:2.5.5]
+	at br.com.boot.spring.biblioteca.BibliotecaApplication.main(BibliotecaApplication.java:10) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_291]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_291]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_291]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_291]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.5.5.jar:2.5.5]
+
+2021-10-10 11:21:18.902  INFO 13080 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-10-10 11:21:19.254  INFO 13080 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-10 11:21:19.266  INFO 13080 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'bibliotecaPU'
+2021-10-10 11:21:19.734  WARN 13080 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-10-10 11:21:20.315  INFO 13080 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-10-10 11:21:20.321  INFO 13080 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2021-10-10 11:21:20.369  INFO 13080 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path '/api/biblioteca'
+2021-10-10 11:21:20.382  INFO 13080 --- [restartedMain] b.c.b.s.b.BibliotecaApplication          : Started BibliotecaApplication in 3.548 seconds (JVM running for 4.072)
+2021-10-10 11:21:21.222  INFO 13080 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[.[.[/api/biblioteca]          : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-10 11:21:21.222  INFO 13080 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-10-10 11:21:21.223  INFO 13080 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2021-10-10 11:21:22.491  WARN 13080 --- [registrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Failed to register application as Application(name=biblioteca-spring-boot, managementUrl=http://192.168.0.142:8081/api/biblioteca/actuator, healthUrl=http://192.168.0.142:8081/api/biblioteca/actuator/health, serviceUrl=http://192.168.0.142:8081/api/biblioteca) at spring-boot-admin ([http://localhost:8089/instances]): I/O error on POST request for "http://localhost:8089/instances": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect. Further attempts are logged on DEBUG level
+2021-10-10 11:22:53.667  INFO 13080 --- [RMI TCP Connection(6)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-10-10 11:22:53.812  INFO 13080 --- [RMI TCP Connection(6)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'bibliotecaPU'
+2021-10-10 11:24:51.680  INFO 3820 --- [restartedMain] b.c.b.s.b.BibliotecaApplication          : Starting BibliotecaApplication using Java 1.8.0_291 on LAPTOP-H2FK604K with PID 3820 (C:\Users\bmnso\workspace\spring\biblioteca-spring-boot\target\classes started by bmnso in C:\Users\bmnso\workspace\spring\biblioteca-spring-boot)
+2021-10-10 11:24:51.683  INFO 3820 --- [restartedMain] b.c.b.s.b.BibliotecaApplication          : No active profile set, falling back to default profiles: default
+2021-10-10 11:24:51.708  INFO 3820 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-10-10 11:24:51.709  INFO 3820 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-10-10 11:24:52.144  INFO 3820 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-10-10 11:24:52.246  INFO 3820 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 96 ms. Found 1 JPA repository interfaces.
+2021-10-10 11:24:52.857  INFO 3820 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2021-10-10 11:24:52.864  INFO 3820 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-10-10 11:24:52.865  INFO 3820 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-10 11:24:52.921  INFO 3820 --- [restartedMain] o.a.c.c.C.[.[.[/api/biblioteca]          : Initializing Spring embedded WebApplicationContext
+2021-10-10 11:24:52.921  INFO 3820 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1212 ms
+2021-10-10 11:24:53.079  WARN 3820 --- [restartedMain] o.s.o.j.p.DefaultPersistenceUnitManager  : Found explicit default persistence unit with name 'bibliotecaPU' in persistence.xml - overriding local default persistence unit settings ('packagesToScan'/'mappingResources')
+2021-10-10 11:24:53.091  INFO 3820 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: bibliotecaPU]
+2021-10-10 11:24:53.121  INFO 3820 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-10 11:24:53.213  INFO 3820 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-10 11:24:53.812  INFO 3820 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-10-10 11:24:54.425  INFO 3820 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-10 11:24:54.437  INFO 3820 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'bibliotecaPU'
+2021-10-10 11:24:54.793  WARN 3820 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-10-10 11:24:55.437  INFO 3820 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-10-10 11:24:55.442  INFO 3820 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2021-10-10 11:24:55.477  INFO 3820 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path '/api/biblioteca'
+2021-10-10 11:24:55.486  INFO 3820 --- [restartedMain] b.c.b.s.b.BibliotecaApplication          : Started BibliotecaApplication in 4.066 seconds (JVM running for 4.573)
+2021-10-10 11:24:56.677  INFO 3820 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[.[.[/api/biblioteca]          : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-10 11:24:56.677  INFO 3820 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-10-10 11:24:56.678  INFO 3820 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-10-10 11:24:57.590  WARN 3820 --- [registrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Failed to register application as Application(name=biblioteca-spring-boot, managementUrl=http://192.168.0.142:8081/api/biblioteca/actuator, healthUrl=http://192.168.0.142:8081/api/biblioteca/actuator/health, serviceUrl=http://192.168.0.142:8081/api/biblioteca) at spring-boot-admin ([http://localhost:8089/instances]): I/O error on POST request for "http://localhost:8089/instances": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect. Further attempts are logged on DEBUG level
+2021-10-10 11:28:02.637 DEBUG 3820 --- [http-nio-8081-exec-2] org.hibernate.SQL                        : select editora0_.codigo as codigo1_0_, editora0_.nome as nome2_0_ from public.editora editora0_ where editora0_.codigo=?
+2021-10-10 11:28:08.360 DEBUG 3820 --- [http-nio-8081-exec-3] org.hibernate.SQL                        : select editora0_.codigo as codigo1_0_, editora0_.nome as nome2_0_ from public.editora editora0_ order by editora0_.nome asc
+2021-10-10 11:28:14.954  INFO 3820 --- [RMI TCP Connection(9)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-10-10 11:28:15.121  INFO 3820 --- [RMI TCP Connection(9)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'bibliotecaPU'

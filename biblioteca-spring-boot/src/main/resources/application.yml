@@ -1,5 +1,5 @@
-# database-biblioteca
-database-biblioteca:
+# biblioteca
+biblioteca:
   datasource:
     jdbc-url: jdbc:postgresql://localhost:5432/biblioteca
     username: postgres
