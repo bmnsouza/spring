@@ -18,11 +18,12 @@ public class WebClientUtil {
 
 	/**
 	 * @param urlGateway
+	 * @param path
 	 * @param chaveToken
 	 * @return WebClient com Token (Authorization no Header)
 	 */
-	public WebClient webClientToken(String urlGateway, String chaveToken) {
-		TokenModel tokenModel = obterToken(urlGateway, chaveToken);
+	public WebClient webClientToken(String urlGateway, String path, String chaveToken) {
+		TokenModel tokenModel = obterToken(urlGateway, path, chaveToken);
 		return WebClient.builder().baseUrl(urlGateway)
 			.defaultHeader(AUTHORIZATION, new StringBuilder(tokenModel.getToken_type()).append(' ').append(tokenModel.getAccess_token()).toString())
 			.build();
@@ -30,12 +31,13 @@ public class WebClientUtil {
 
 	/**
 	 * @param urlGateway
+	 * @param path
 	 * @param chaveToken
 	 * @return TokenModel para a chave enviada
 	 */
-	private TokenModel obterToken(String urlGateway, String chaveToken) {
+	private TokenModel obterToken(String urlGateway, String path, String chaveToken) {
 		return webClient(urlGateway).get()
-			.uri(uriBuilder -> uriBuilder.path("/corporativo/v1/obterToken")
+			.uri(uriBuilder -> uriBuilder.path(path)
 					.queryParam("chave", chaveToken)
 					.build())
 			.retrieve()
