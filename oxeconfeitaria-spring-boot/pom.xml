@@ -12,7 +12,7 @@
 	<artifactId>oxeconfeitaria</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>oxeconfeitaria-spring-boot</name>
-	<description>Ôxe Confeitaria project for Spring Boot</description>
+	<description>Oxeconfeitaria project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<resource.delimiter>^</resource.delimiter>
