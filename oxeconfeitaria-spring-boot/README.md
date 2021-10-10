@@ -1,7 +1,8 @@
-# Ôxe Confeitaria Spring Boot
+# Oxeconfeitaria
 
-Projeto Spring Boot da Ôxe Confeitaria
+Projeto Spring Boot que se conecta ao banco de dados objeto relacional PostgreSQL.
 
-### Documentação Open API - Swagger
+
+**Documentação Open API - Swagger**
 
 - http://localhost:8080/api/oxeconfeitaria/swagger-ui.html
