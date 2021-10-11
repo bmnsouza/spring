@@ -2,14 +2,14 @@ package br.com.boot.spring.biblioteca.camadas.service;
 
 import org.springframework.http.ResponseEntity;
 
-import br.com.boot.spring.biblioteca.camadas.entity.dto.EditoraDTO.Request.Atualizacao;
-import br.com.boot.spring.biblioteca.camadas.entity.dto.EditoraDTO.Request.Cadastro;
+import br.com.boot.spring.biblioteca.camadas.entity.dto.AutorDTO.Request.Atualizacao;
+import br.com.boot.spring.biblioteca.camadas.entity.dto.AutorDTO.Request.Cadastro;
 import br.com.boot.spring.base.exception.ServiceException;
 import br.com.boot.spring.base.util.response.EntidadeResponse;
 
-public interface EditoraService {
+public interface AutorService {
 
-	ResponseEntity<EntidadeResponse> buscar(Integer codigo, String nome);
+	ResponseEntity<EntidadeResponse> buscar(Integer codigo, String primeiroNome, String inicialMeioNome, String ultimoNome);
 	
 	ResponseEntity<EntidadeResponse> cadastrar(Cadastro cadastro) throws ServiceException;
 	

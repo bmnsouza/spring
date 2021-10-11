@@ -6,12 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import br.com.boot.spring.biblioteca.camadas.entity.Editora;
+import br.com.boot.spring.biblioteca.camadas.entity.Autor;
 
 @Repository
-public interface EditoraRepository extends JpaRepository<Editora, Integer> {
+public interface AutorRepository extends JpaRepository<Autor, Integer> {
 	
 	@Query(nativeQuery = true)
-	List<Editora> buscar(Integer codigo, String nome);
+	List<Autor> buscar(Integer codigo, String primeiroNome, String inicialMeioNome, String ultimoNome);
 
 }

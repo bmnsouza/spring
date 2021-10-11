@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0" xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+
+	<named-native-query name="Autor.buscar" result-class="br.com.boot.spring.biblioteca.camadas.entity.Autor">
+		<query>
+		<![CDATA[
+			select * from public.autor aut where (cast(?1 as varchar) is null or aut.codigo = to_number(cast(?1 as varchar), '999999999'))
+			and (cast(?2 as varchar) is null or upper(aut.primeiro_nome) like upper('%' || cast(?2 as varchar) || '%'))
+			and (cast(?3 as varchar) is null or upper(aut.inicial_meio_nome) = upper(cast(?3 as varchar)))
+			and (cast(?4 as varchar) is null or upper(aut.ultimo_nome) like upper('%' || cast(?4 as varchar) || '%')) order by aut.primeiro_nome
+		]]>
+		</query>
+	</named-native-query>
+
+</entity-mappings>

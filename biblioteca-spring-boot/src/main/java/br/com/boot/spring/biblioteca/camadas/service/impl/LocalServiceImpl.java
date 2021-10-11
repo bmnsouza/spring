@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -31,22 +30,7 @@ public class LocalServiceImpl implements LocalService {
 
 	@Override
 	public ResponseEntity<EntidadeResponse> buscar(Integer codigo, String nome) {
-		List<Local> dados = null;
-		
-		if (codigo != null) {
-			dados = localRepository.getByCodigo(codigo);
-		} else if (nome != null) {
-			dados = localRepository.findByNomeContainingIgnoreCase(nome, Sort.by(Sort.Direction.ASC, "nome"));
-		} else {
-			dados = localRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
-		}
-		
-		return responseUtil.responseSucesso(OK, dados);
-	}
-	
-	@Override
-	public ResponseEntity<EntidadeResponse> buscarNativeQuery(Integer codigo, String nome) {
-		List<Local> dados = localRepository.buscarNativeQuery(codigo, nome);
+		List<Local> dados = localRepository.buscar(codigo, nome);
 		return responseUtil.responseSucesso(OK, dados);
 	}
 	

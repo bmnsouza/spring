@@ -17,7 +17,7 @@ public enum EditoraDTO {;
 	}
 	
 	private interface Nome {
-		@NotEmpty @Size(min = 5, max = 50)
+		@NotEmpty @Size(min = 3, max = 50)
 		String getNome();
 	}
 

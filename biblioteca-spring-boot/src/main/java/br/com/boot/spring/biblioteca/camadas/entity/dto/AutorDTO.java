@@ -9,24 +9,36 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-public enum LocalDTO {;
+public enum AutorDTO {;
 
 	private interface Codigo {
 		@NotNull @Min(1) @Max(999999999)
 		Integer getCodigo();
 	}
 	
-	private interface Nome {
-		@NotEmpty @Size(min = 3, max = 50)
-		String getNome();
+	private interface PrimeiroNome {
+		@NotEmpty @Size(min = 3, max = 20)
+		String getPrimeiroNome();
+	}
+
+	private interface InicialMeioNome {
+		@Size(min = 1, max = 1)
+		String getInicialMeioNome();
+	}
+
+	private interface UltimoNome {
+		@NotEmpty @Size(min = 3, max = 20)
+		String getUltimoNome();
 	}
 
 	public enum Request {;
 
 		@Data
-		public static class Cadastro implements Codigo, Nome {
+		public static class Cadastro implements Codigo, PrimeiroNome, InicialMeioNome, UltimoNome {
 			private Integer codigo;
-			private String nome;
+			private String primeiroNome;
+			private String inicialMeioNome;
+			private String ultimoNome;
 		}
 
 		@Data

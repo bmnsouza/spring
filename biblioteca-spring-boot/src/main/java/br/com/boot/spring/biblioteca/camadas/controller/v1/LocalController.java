@@ -38,26 +38,15 @@ public class LocalController {
 	@Autowired
 	private LocalService localService;
 
-	@Operation(summary = "Busca local pelo código ou nome.",
+	@Operation(summary = "Busca local pelo código e/ou nome.",
 			description = "Se nenhum parâmetro for informado, serão retornados todos os registros.<br><br>"
-					+ "Esta API utiliza JPA.")
+					+ "Esta API utiliza query nativa.")
 	@ApiResponsesOk
 	@GetMapping("buscar")
 	public ResponseEntity<EntidadeResponse> buscar(
 			@Parameter(description = "Código do local.") @RequestParam(required = false) @Min(1) @Max(999999999) Integer codigo,
 			@Parameter(description = "Nome do local.") @RequestParam(required = false) @Size(min = 3, max = 50) String nome) {
 		return localService.buscar(codigo, nome);
-	}
-	
-	@Operation(summary = "Busca local pelo código e/ou nome.",
-			description = "Se nenhum parâmetro for informado, serão retornados todos os registros.<br><br>"
-					+ "Esta API utiliza query nativa.")
-	@ApiResponsesOk
-	@GetMapping("buscarNativeQuery")
-	public ResponseEntity<EntidadeResponse> buscarNativeQuery(
-			@Parameter(description = "Código do local.") @RequestParam(required = false) @Min(1) @Max(999999999) Integer codigo,
-			@Parameter(description = "Nome do local.") @RequestParam(required = false) @Size(min = 3, max = 50) String nome) {
-		return localService.buscarNativeQuery(codigo, nome);
 	}
 	
 	@Operation(summary = "Cadastra um local.",

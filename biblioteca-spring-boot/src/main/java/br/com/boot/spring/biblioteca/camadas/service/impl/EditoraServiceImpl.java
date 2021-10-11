@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -31,22 +30,7 @@ public class EditoraServiceImpl implements EditoraService {
 
 	@Override
 	public ResponseEntity<EntidadeResponse> buscar(Integer codigo, String nome) {
-		List<Editora> dados = null;
-		
-		if (codigo != null) {
-			dados = editoraRepository.getByCodigo(codigo);
-		} else if (nome != null) {
-			dados = editoraRepository.findByNomeContainingIgnoreCase(nome, Sort.by(Sort.Direction.ASC, "nome"));
-		} else {
-			dados = editoraRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
-		}
-		
-		return responseUtil.responseSucesso(OK, dados);
-	}
-	
-	@Override
-	public ResponseEntity<EntidadeResponse> buscarNativeQuery(Integer codigo, String nome) {
-		List<Editora> dados = editoraRepository.buscarNativeQuery(codigo, nome);
+		List<Editora> dados = editoraRepository.buscar(codigo, nome);
 		return responseUtil.responseSucesso(OK, dados);
 	}
 	
@@ -57,10 +41,7 @@ public class EditoraServiceImpl implements EditoraService {
 			throw new ServiceException("Editora já cadastrada");
 		}
 		
-		Editora editora = new Editora();
-		editora.setCodigo(cadastro.getCodigo());
-		editora.setNome(cadastro.getNome());
-		editora = editoraRepository.save(editora);
+		editoraRepository.save(new Editora(cadastro.getCodigo(), cadastro.getNome()));
 
 		return responseUtil.responseSucesso(CREATED);
 	}

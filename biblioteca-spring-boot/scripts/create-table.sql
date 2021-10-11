@@ -2,7 +2,7 @@ CREATE TABLE public.autor
 (
     codigo integer NOT NULL,
     primeiro_nome character varying(20) COLLATE pg_catalog."default" NOT NULL,
-    inicial_meio_nome character varying(1) COLLATE pg_catalog."default" NOT NULL,
+    inicial_meio_nome character varying(1) COLLATE pg_catalog."default" NULL,
     ultimo_nome character varying(20) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT pk_128 PRIMARY KEY (codigo)
 )

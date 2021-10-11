@@ -11,8 +11,6 @@ public interface LocalService {
 
 	ResponseEntity<EntidadeResponse> buscar(Integer codigo, String nome);
 	
-	ResponseEntity<EntidadeResponse> buscarNativeQuery(Integer codigo, String nome);
-	
 	ResponseEntity<EntidadeResponse> cadastrar(Cadastro cadastro) throws ServiceException;
 	
 	ResponseEntity<EntidadeResponse> atualizar(Atualizacao atualizacao) throws ServiceException;

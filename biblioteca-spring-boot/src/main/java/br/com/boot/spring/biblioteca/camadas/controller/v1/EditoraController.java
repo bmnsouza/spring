@@ -38,26 +38,15 @@ public class EditoraController {
 	@Autowired
 	private EditoraService editoraService;
 
-	@Operation(summary = "Busca editora pelo código ou nome.",
-			description = "Se nenhum parâmetro for informado, serão retornados todos os registros.<br><br>"
-					+ "Esta API utiliza JPA.")
-	@ApiResponsesOk
-	@GetMapping("buscar")
-	public ResponseEntity<EntidadeResponse> buscar(
-			@Parameter(description = "Código da editora.") @RequestParam(required = false) @Min(1) @Max(999999999) Integer codigo,
-			@Parameter(description = "Nome da editora.") @RequestParam(required = false) @Size(min = 3, max = 50) String nome) {
-		return editoraService.buscar(codigo, nome);
-	}
-	
 	@Operation(summary = "Busca editora pelo código e/ou nome.",
 			description = "Se nenhum parâmetro for informado, serão retornados todos os registros.<br><br>"
 					+ "Esta API utiliza query nativa.")
 	@ApiResponsesOk
-	@GetMapping("buscarNativeQuery")
-	public ResponseEntity<EntidadeResponse> buscarNativeQuery(
+	@GetMapping("buscar")
+	public ResponseEntity<EntidadeResponse> buscar(
 			@Parameter(description = "Código da editora.") @RequestParam(required = false) @Min(1) @Max(999999999) Integer codigo,
 			@Parameter(description = "Nome do editora.") @RequestParam(required = false) @Size(min = 3, max = 50) String nome) {
-		return editoraService.buscarNativeQuery(codigo, nome);
+		return editoraService.buscar(codigo, nome);
 	}
 	
 	@Operation(summary = "Cadastra uma editora.",
