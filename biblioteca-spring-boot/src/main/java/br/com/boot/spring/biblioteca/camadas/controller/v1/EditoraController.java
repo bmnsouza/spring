@@ -4,6 +4,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,14 +40,14 @@ public class EditoraController {
 	private EditoraService editoraService;
 
 	@Operation(summary = "Busca editora pelo código e/ou nome.",
-			description = "Se nenhum parâmetro for informado, serão retornados todos os registros.<br><br>"
-					+ "Esta API utiliza query nativa.")
+			description = "Se nenhum parâmetro for informado, serão retornados todos os registros paginados.")
 	@ApiResponsesOk
 	@GetMapping("buscar")
 	public ResponseEntity<EntidadeResponse> buscar(
 			@Parameter(description = "Código da editora.") @RequestParam(required = false) @Min(1) @Max(999999999) Integer codigo,
-			@Parameter(description = "Nome do editora.") @RequestParam(required = false) @Size(min = 3, max = 50) String nome) {
-		return editoraService.buscar(codigo, nome);
+			@Parameter(description = "Nome do editora.") @RequestParam(required = false) @Size(min = 3, max = 50) String nome,
+			@Parameter(description = "Número da página desejada na paginação.") @RequestParam(defaultValue = "0") @PositiveOrZero Integer pagina) {
+		return editoraService.buscar(codigo, nome, pagina);
 	}
 	
 	@Operation(summary = "Cadastra uma editora.",

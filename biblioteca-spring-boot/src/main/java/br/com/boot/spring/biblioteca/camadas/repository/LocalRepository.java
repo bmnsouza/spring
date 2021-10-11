@@ -1,7 +1,7 @@
 package br.com.boot.spring.biblioteca.camadas.repository;
 
-import java.util.List;
-
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -12,6 +12,6 @@ import br.com.boot.spring.biblioteca.camadas.entity.Local;
 public interface LocalRepository extends JpaRepository<Local, Integer> {
 	
 	@Query(nativeQuery = true)
-	List<Local> buscar(Integer codigo, String nome);
+	Slice<Local> buscar(Integer codigo, String nome, Pageable pageable);
 
 }

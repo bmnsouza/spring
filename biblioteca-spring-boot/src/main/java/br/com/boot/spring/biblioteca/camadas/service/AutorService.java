@@ -9,7 +9,7 @@ import br.com.boot.spring.base.util.response.EntidadeResponse;
 
 public interface AutorService {
 
-	ResponseEntity<EntidadeResponse> buscar(Integer codigo, String primeiroNome, String inicialMeioNome, String ultimoNome);
+	ResponseEntity<EntidadeResponse> buscar(Integer codigo, String primeiroNome, String inicialMeioNome, String ultimoNome, Integer pagina);
 	
 	ResponseEntity<EntidadeResponse> cadastrar(Cadastro cadastro) throws ServiceException;
 	

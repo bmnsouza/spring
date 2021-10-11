@@ -4,6 +4,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,14 +40,14 @@ public class LocalController {
 	private LocalService localService;
 
 	@Operation(summary = "Busca local pelo código e/ou nome.",
-			description = "Se nenhum parâmetro for informado, serão retornados todos os registros.<br><br>"
-					+ "Esta API utiliza query nativa.")
+			description = "Se nenhum parâmetro for informado, serão retornados todos os registros paginados.")
 	@ApiResponsesOk
 	@GetMapping("buscar")
 	public ResponseEntity<EntidadeResponse> buscar(
 			@Parameter(description = "Código do local.") @RequestParam(required = false) @Min(1) @Max(999999999) Integer codigo,
-			@Parameter(description = "Nome do local.") @RequestParam(required = false) @Size(min = 3, max = 50) String nome) {
-		return localService.buscar(codigo, nome);
+			@Parameter(description = "Nome do local.") @RequestParam(required = false) @Size(min = 3, max = 50) String nome,
+			@Parameter(description = "Número da página desejada na paginação.") @RequestParam(defaultValue = "0") @PositiveOrZero Integer pagina) {
+		return localService.buscar(codigo, nome, pagina);
 	}
 	
 	@Operation(summary = "Cadastra um local.",

@@ -6,6 +6,158 @@
 	},
 	"item": [
 		{
+			"name": "Autor",
+			"item": [
+				{
+					"name": "buscar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/biblioteca/v1/autor/buscar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"biblioteca",
+								"v1",
+								"autor",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "codigo",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "primeiroNome",
+									"value": "Robert",
+									"disabled": true
+								},
+								{
+									"key": "inicialMeioNome",
+									"value": "T",
+									"disabled": true
+								},
+								{
+									"key": "ultimoNome",
+									"value": "Kiyosaki",
+									"disabled": true
+								},
+								{
+									"key": "pagina",
+									"value": "0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": 10,\r\n    \"primeiroNome\": \"Panda\",\r\n    \"inicialMeioNome\": \"M\",\r\n    \"ultimoNome\": \"Books\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/biblioteca/v1/autor/cadastrar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"biblioteca",
+								"v1",
+								"autor",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": 10,\r\n    \"primeiroNome\": \"Books\",\r\n    \"inicialMeioNome\": \"C\",\r\n    \"ultimoNome\": \"Panda\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/biblioteca/v1/autor/atualizar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"biblioteca",
+								"v1",
+								"autor",
+								"atualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/biblioteca/v1/autor/excluir?codigo=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"biblioteca",
+								"v1",
+								"autor",
+								"excluir"
+							],
+							"query": [
+								{
+									"key": "codigo",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Editora",
 			"item": [
 				{
@@ -26,7 +178,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/api/biblioteca/v1/editora/buscar",
+							"raw": "{{base_url}}/api/biblioteca/v1/editora/buscar?pagina=0",
 							"host": [
 								"{{base_url}}"
 							],
@@ -47,51 +199,10 @@
 									"key": "nome",
 									"value": "açúcar",
 									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "buscarNativeQuery",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/api/biblioteca/v1/editora/buscarNativeQuery",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"api",
-								"biblioteca",
-								"v1",
-								"editora",
-								"buscarNativeQuery"
-							],
-							"query": [
-								{
-									"key": "codigo",
-									"value": "2",
-									"disabled": true
 								},
 								{
-									"key": "nome",
-									"value": "Collins",
-									"disabled": true
+									"key": "pagina",
+									"value": "0"
 								}
 							]
 						}
@@ -208,7 +319,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/api/biblioteca/v1/local/buscar",
+							"raw": "{{base_url}}/api/biblioteca/v1/local/buscar?pagina=0",
 							"host": [
 								"{{base_url}}"
 							],
@@ -229,49 +340,10 @@
 									"key": "nome",
 									"value": "açúcar",
 									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "buscarNativeQuery",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/api/biblioteca/v1/local/buscarNativeQuery?codigo=2&nome=Loc",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"api",
-								"biblioteca",
-								"v1",
-								"local",
-								"buscarNativeQuery"
-							],
-							"query": [
-								{
-									"key": "codigo",
-									"value": "2"
 								},
 								{
-									"key": "nome",
-									"value": "Loc"
+									"key": "pagina",
+									"value": "0"
 								}
 							]
 						}

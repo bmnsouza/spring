@@ -3,10 +3,12 @@ package br.com.boot.spring.biblioteca.camadas.service.impl;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -28,9 +30,12 @@ public class AutorServiceImpl implements AutorService {
 	@Autowired
 	private ResponseUtil responseUtil;
 
+	@Value("${spring.data.web.pageable.default-page-size}")
+	private int pageSize;
+
 	@Override
-	public ResponseEntity<EntidadeResponse> buscar(Integer codigo, String primeiroNome, String inicialMeioNome, String ultimoNome) {
-		List<Autor> dados = autorRepository.buscar(codigo, primeiroNome, inicialMeioNome, ultimoNome);
+	public ResponseEntity<EntidadeResponse> buscar(Integer codigo, String primeiroNome, String inicialMeioNome, String ultimoNome, Integer pagina) {
+		Slice<Autor> dados = autorRepository.buscar(codigo, primeiroNome, inicialMeioNome, ultimoNome, PageRequest.of(pagina, pageSize));
 		return responseUtil.responseSucesso(OK, dados);
 	}
 	
