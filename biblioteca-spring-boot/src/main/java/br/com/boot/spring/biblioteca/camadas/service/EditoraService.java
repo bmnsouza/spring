@@ -13,7 +13,7 @@ public interface EditoraService {
 	
 	ResponseEntity<EntidadeResponse> buscarNativeQuery(Integer codigo, String nome);
 	
-	ResponseEntity<EntidadeResponse> cadastrar(Cadastro cadastro);
+	ResponseEntity<EntidadeResponse> cadastrar(Cadastro cadastro) throws ServiceException;
 	
 	ResponseEntity<EntidadeResponse> atualizar(Atualizacao atualizacao) throws ServiceException;
 

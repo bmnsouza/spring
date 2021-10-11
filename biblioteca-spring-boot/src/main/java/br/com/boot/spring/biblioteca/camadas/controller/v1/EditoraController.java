@@ -64,7 +64,7 @@ public class EditoraController {
 			description = "Recebe um objeto JSON contendo código e nome da editora para ser cadastrada.")
 	@ApiResponsesCreated
 	@PostMapping("cadastrar")
-	public ResponseEntity<EntidadeResponse> cadastrar(@Parameter(description = "Editora para cadastrar.") @RequestBody @Valid Cadastro cadastro) {
+	public ResponseEntity<EntidadeResponse> cadastrar(@Parameter(description = "Editora para cadastrar.") @RequestBody @Valid Cadastro cadastro) throws ServiceException {
 		return editoraService.cadastrar(cadastro);
 	}
 

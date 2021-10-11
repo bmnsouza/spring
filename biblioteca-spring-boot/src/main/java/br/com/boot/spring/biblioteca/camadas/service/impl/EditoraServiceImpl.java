@@ -3,9 +3,7 @@ package br.com.boot.spring.biblioteca.camadas.service.impl;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,18 +51,18 @@ public class EditoraServiceImpl implements EditoraService {
 	}
 	
 	@Override
-	public ResponseEntity<EntidadeResponse> cadastrar(Cadastro cadastro) {
+	public ResponseEntity<EntidadeResponse> cadastrar(Cadastro cadastro) throws ServiceException {
+		
+		if (editoraRepository.findById(cadastro.getCodigo()).isPresent()) {
+			throw new ServiceException("Editora já cadastrada");
+		}
 		
 		Editora editora = new Editora();
 		editora.setCodigo(cadastro.getCodigo());
 		editora.setNome(cadastro.getNome());
-		
 		editora = editoraRepository.save(editora);
 
-		Map<String, Integer> dados = new HashMap<>();
-		dados.put("codigo", editora.getCodigo());
-		
-		return responseUtil.responseSucesso(CREATED, dados);
+		return responseUtil.responseSucesso(CREATED);
 	}
 
 	@Override
@@ -76,7 +74,6 @@ public class EditoraServiceImpl implements EditoraService {
 		Editora editora = optional.get();
 		editora.setCodigo(atualizacao.getCodigo());
 		editora.setNome(atualizacao.getNome());
-		
 		editoraRepository.save(editora);			
 	
 		return responseUtil.responseSucesso(OK);
