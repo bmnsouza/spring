@@ -186,6 +186,186 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "buscar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/biblioteca/v1/local/buscar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"biblioteca",
+								"v1",
+								"local",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "codigo",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "nome",
+									"value": "açúcar",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscarNativeQuery",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/biblioteca/v1/local/buscarNativeQuery?codigo=2&nome=Loc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"biblioteca",
+								"v1",
+								"local",
+								"buscarNativeQuery"
+							],
+							"query": [
+								{
+									"key": "codigo",
+									"value": "2"
+								},
+								{
+									"key": "nome",
+									"value": "Loc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": 2,\r\n    \"nome\": \"Local 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/biblioteca/v1/local/cadastrar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"biblioteca",
+								"v1",
+								"local",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": 1,\r\n    \"nome\": \"Alta Books\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/biblioteca/v1/local/atualizar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"biblioteca",
+								"v1",
+								"local",
+								"atualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/biblioteca/v1/local/excluir?codigo=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"biblioteca",
+								"v1",
+								"local",
+								"excluir"
+							],
+							"query": [
+								{
+									"key": "codigo",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

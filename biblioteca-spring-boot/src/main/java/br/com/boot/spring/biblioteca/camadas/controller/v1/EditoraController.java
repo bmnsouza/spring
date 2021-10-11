@@ -38,7 +38,7 @@ public class EditoraController {
 	@Autowired
 	private EditoraService editoraService;
 
-	@Operation(summary = "Busca editora pelo identificador ou descrição.",
+	@Operation(summary = "Busca editora pelo código ou nome.",
 			description = "Se nenhum parâmetro for informado, serão retornados todos os registros.<br><br>"
 					+ "Esta API utiliza JPA.")
 	@ApiResponsesOk
@@ -49,7 +49,7 @@ public class EditoraController {
 		return editoraService.buscar(codigo, nome);
 	}
 	
-	@Operation(summary = "Busca editora pelo identificador e/ou descrição.",
+	@Operation(summary = "Busca editora pelo código e/ou nome.",
 			description = "Se nenhum parâmetro for informado, serão retornados todos os registros.<br><br>"
 					+ "Esta API utiliza query nativa.")
 	@ApiResponsesOk
@@ -60,7 +60,7 @@ public class EditoraController {
 		return editoraService.buscarNativeQuery(codigo, nome);
 	}
 	
-	@Operation(summary = "Cadastra um editora.",
+	@Operation(summary = "Cadastra uma editora.",
 			description = "Recebe um objeto JSON contendo código e nome da editora para ser cadastrada.")
 	@ApiResponsesCreated
 	@PostMapping("cadastrar")
