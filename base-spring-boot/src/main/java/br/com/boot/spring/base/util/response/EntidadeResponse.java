@@ -23,4 +23,22 @@ public class EntidadeResponse {
 		private Object dados = new HashMap<>();
 	}
 
+	@Data
+	public class Paginacao {
+
+		private int pagina;
+
+		private int elementos;
+
+		private boolean conteudo;
+
+		private boolean anterior;
+
+		private boolean proxima;
+
+		private boolean primeira;
+
+		private boolean ultima;
+	}
+
 }
