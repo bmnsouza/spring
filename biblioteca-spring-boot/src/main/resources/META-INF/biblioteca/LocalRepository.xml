@@ -5,8 +5,10 @@
 	<named-native-query name="Local.buscar" result-class="br.com.boot.spring.biblioteca.camadas.entity.Local">
 		<query>
 		<![CDATA[
-			select * from public.local loc where (cast(?1 as varchar) is null or loc.codigo = to_number(cast(?1 as varchar), '999999999')) 
-			and (cast(?2 as varchar) is null or upper(loc.nome) like upper('%' || cast(?2 as varchar) || '%')) order by loc.nome
+			select * from public.local loc
+			where (cast(?1 as varchar) is null or loc.codigo = to_number(cast(?1 as varchar), '999999999')) 
+			and (cast(?2 as varchar) is null or upper(loc.nome) like upper('%' || cast(?2 as varchar) || '%'))
+			order by loc.nome
 		]]>
 		</query>
 	</named-native-query>

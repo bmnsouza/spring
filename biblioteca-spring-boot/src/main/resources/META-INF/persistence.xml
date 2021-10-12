@@ -5,7 +5,12 @@
 	<persistence-unit name="bibliotecaPU" transaction-type="RESOURCE_LOCAL">
 		<mapping-file>META-INF/biblioteca/AutorRepository.xml</mapping-file>
 		<mapping-file>META-INF/biblioteca/EditoraRepository.xml</mapping-file>
+		<mapping-file>META-INF/biblioteca/EmprestimoLivroRepository.xml</mapping-file>
+		<mapping-file>META-INF/biblioteca/EmprestimoRepository.xml</mapping-file>
+		<mapping-file>META-INF/biblioteca/LivroAutorRepository.xml</mapping-file>
+		<mapping-file>META-INF/biblioteca/LivroRepository.xml</mapping-file>
 		<mapping-file>META-INF/biblioteca/LocalRepository.xml</mapping-file>
+		<mapping-file>META-INF/biblioteca/UsuarioRepository.xml</mapping-file>
 	</persistence-unit>
 
 </persistence>

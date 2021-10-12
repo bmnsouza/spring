@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0" xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+
+	<named-native-query name="Emprestimo.buscar" result-class="br.com.boot.spring.biblioteca.camadas.entity.Emprestimo">
+		<query>
+		<![CDATA[
+			select * from public.emprestimo emp
+			where (cast(?1 as varchar) is null or emp.numero = to_number(cast(?1 as varchar), '999999999'))
+			and (cast(?2 as varchar) is null or emp.mat_usuario = to_number(cast(?2 as varchar), '999999999'))
+			and (cast(?3 as varchar) is null or emp.data = to_date(?3))
+			order by emp.data desc
+		]]>
+		</query>
+	</named-native-query>
+
+</entity-mappings>

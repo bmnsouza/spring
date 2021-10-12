@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0" xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+
+	<named-native-query name="EmprestimoLivro.buscar" result-class="br.com.boot.spring.biblioteca.camadas.entity.EmprestimoLivro">
+		<query>
+		<![CDATA[
+			select * from public.emprestimo_livro eml
+			where (cast(?1 as varchar) is null or eml.num_emprestimo = to_number(cast(?1 as varchar), '999999999'))
+			and (cast(?2 as varchar) is null or upper(eml.isbn_livro) like upper('%' || cast(?2 as varchar) || '%'))
+			and (cast(?3 as varchar) is null or eml.data_prev_dev = to_date(?3)) 
+			and (cast(?4 as varchar) is null or eml.data_dev = to_date(?4)) 
+			and (cast(?5 as varchar) is null or eml.valor_multa = to_number(cast(?5 as varchar), '9999999999.99'))
+			order by eml.data_dev
+		]]>
+		</query>
+	</named-native-query>
+
+</entity-mappings>

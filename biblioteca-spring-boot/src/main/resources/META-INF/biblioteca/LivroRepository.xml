@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0" xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+
+	<named-native-query name="Livro.buscar" result-class="br.com.boot.spring.biblioteca.camadas.entity.Livro">
+		<query>
+		<![CDATA[
+			select * from public.livro liv
+			where (cast(?1 as varchar) is null or upper(liv.isbn) like '%' || cast(?1 as varchar) || '%')
+			and (cast(?2 as varchar) is null or upper(liv.titulo) like upper('%' || cast(?2 as varchar) || '%'))
+			and (cast(?3 as varchar) is null or upper(liv.subtitulo) like upper('%' || cast(?3 as varchar) || '%'))
+			and (cast(?4 as varchar) is null or liv.num_paginas = to_number(cast(?4 as varchar), '999999999'))
+			and (cast(?5 as varchar) is null or liv.edicao = to_number(cast(?5 as varchar), '999999999'))
+			and (cast(?6 as varchar) is null or liv.volume = to_number(cast(?6 as varchar), '999999999'))
+			and (cast(?7 as varchar) is null or liv.cod_editora = to_number(cast(?7 as varchar), '999999999'))
+			and (cast(?8 as varchar) is null or liv.cod_local = to_number(cast(?8 as varchar), '999999999'))
+			order by liv.titulo
+		]]>
+		</query>
+	</named-native-query>
+
+</entity-mappings>

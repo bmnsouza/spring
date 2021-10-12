@@ -81,7 +81,7 @@ ALTER TABLE public.local
 
 CREATE TABLE public.livro
 (
-    isbn character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    isbn character varying(13) COLLATE pg_catalog."default" NOT NULL,
     titulo character varying(255) COLLATE pg_catalog."default" NOT NULL,
     subtitulo character varying(255) COLLATE pg_catalog."default" NOT NULL,
     num_paginas integer NOT NULL,
@@ -118,7 +118,7 @@ CREATE INDEX fkidx_84
 CREATE TABLE public.livro_autor
 (
     cod_autor integer NOT NULL,
-    isbn_livro character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    isbn_livro character varying(13) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT pk_136 PRIMARY KEY (cod_autor, isbn_livro),
     CONSTRAINT fk_133 FOREIGN KEY (cod_autor)
         REFERENCES public.autor (codigo) MATCH SIMPLE
@@ -149,7 +149,7 @@ CREATE INDEX fkidx_147
 CREATE TABLE public.emprestimo_livro
 (
     num_emprestimo integer NOT NULL,
-    isbn_livro character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    isbn_livro character varying(13) COLLATE pg_catalog."default" NOT NULL,
     data_prev_dev date NOT NULL,
     data_dev date NOT NULL,
     valor_multa numeric(12,2),
