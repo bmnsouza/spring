@@ -81,6 +81,7 @@ ALTER TABLE public.local
 
 CREATE TABLE public.livro
 (
+    isbn character varying(20) COLLATE pg_catalog."default" NOT NULL,
     titulo character varying(255) COLLATE pg_catalog."default" NOT NULL,
     subtitulo character varying(255) COLLATE pg_catalog."default" NOT NULL,
     num_paginas integer NOT NULL,
@@ -88,7 +89,6 @@ CREATE TABLE public.livro
     volume integer NOT NULL,
     cod_editora integer NOT NULL,
     cod_local integer NOT NULL,
-    isbn character varying(20) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT pk_8 PRIMARY KEY (isbn),
     CONSTRAINT fk_79 FOREIGN KEY (cod_editora)
         REFERENCES public.editora (codigo) MATCH SIMPLE
