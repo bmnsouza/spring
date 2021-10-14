@@ -44,6 +44,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 import br.com.boot.spring.base.model.ResponseModel;
+import br.com.boot.spring.base.util.ValueUtil;
 import br.com.boot.spring.base.util.response.EntidadeResponse;
 import br.com.boot.spring.base.util.response.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -242,7 +243,7 @@ public class HandleException {
 		ResponseEntity<?> responseEntity = null;
 
 		try {
-			ResponseModel resultModel = ResponseModel.readValue(wcre.getResponseBodyAsString(), ResponseModel.class);
+			ResponseModel resultModel = ValueUtil.readValue(wcre.getResponseBodyAsString(), ResponseModel.class);
 			responseEntity = new ResponseEntity<ResponseModel>(resultModel, wcre.getStatusCode());
 		} catch (Exception e) {
 			responseEntity = responseUtil.responseErro(wcre.getStatusCode(), wcre.getMessage(), MSG_USUARIO_ERRO);
