@@ -19,7 +19,7 @@ public class CacheUtil {
 	}
 	
 	/**
-	 * Cadastra ou atualiza o valor para a key
+	 * Cadastra ou atualiza o valor da key
 	 * @param cdSistema
 	 * @param nmSecao
 	 * @param nmParametro
