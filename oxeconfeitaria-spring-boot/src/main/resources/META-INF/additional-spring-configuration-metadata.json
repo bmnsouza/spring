@@ -16,6 +16,31 @@
 			"description": "password do banco de dados oxeconfeitaria"
 		},
 		{
+			"name": "oxeconfeitaria.datasource.connection-timeout",
+			"type": "java.lang.Integer",
+			"description": "Tempo máximo de espera por uma conexão com o banco de dados"
+		},
+		{
+			"name": "oxeconfeitaria.datasource.max-lifetime",
+			"type": "java.lang.Integer",
+			"description": "Tempo de vida máximo de uma conexão com o banco de dados"
+		},
+		{
+			"name": "oxeconfeitaria.datasource.idle-timeout",
+			"type": "java.lang.Integer",
+			"description": "Quantidade máxima de tempo que uma conexão com o banco de dados pode permanecer inativa"
+		},
+		{
+			"name": "oxeconfeitaria.datasource.minimum-idle",
+			"type": "java.lang.Integer",
+			"description": "Número mínimo de conexões inativas com o banco de dados"
+		},
+		{
+			"name": "oxeconfeitaria.datasource.maximum-pool-size",
+			"type": "java.lang.Integer",
+			"description": "Número máximo de conex�es com o banco de dados"
+		},
+		{
 			"name": "project.version",
 			"type": "java.lang.String",
 			"description": "Versão do projeto"

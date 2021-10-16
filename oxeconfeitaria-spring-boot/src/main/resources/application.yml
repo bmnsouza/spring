@@ -44,6 +44,11 @@ oxeconfeitaria:
     jdbc-url: jdbc:postgresql://localhost:5432/oxeconfeitaria
     username: postgres
     password: postgres
+    connection-timeout: 30000
+    max-lifetime: 30000
+    idle-timeout: 10000
+    minimum-idle: 1
+    maximum-pool-size: 10
 
 
 # project
@@ -75,13 +80,6 @@ spring:
     web:
       pageable:
         default-page-size: 1000
-  datasource:
-    hikari:
-      minimum-idle: 1
-      maximum-pool-size: 10
-      idle-timeout: 10000
-      max-lifetime: 30000
-      connection-timeout: 30000
   jpa:
     database: default
     hibernate:
