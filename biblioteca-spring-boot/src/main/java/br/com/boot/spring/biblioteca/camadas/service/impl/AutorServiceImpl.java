@@ -64,7 +64,7 @@ public class AutorServiceImpl implements AutorService {
 		autor.setUltimoNome(atualizacao.getUltimoNome());
 		
 		autorRepository.save(autor);			
-	
+		
 		return responseUtil.responseSucesso(OK);
 	}
 

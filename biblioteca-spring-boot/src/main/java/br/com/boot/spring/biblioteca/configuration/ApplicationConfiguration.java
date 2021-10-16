@@ -8,6 +8,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 
+import br.com.boot.spring.base.util.CacheUtil;
 import br.com.boot.spring.base.util.WebClientUtil;
 import br.com.boot.spring.base.util.response.ResponseUtil;
 
@@ -35,6 +36,12 @@ public class ApplicationConfiguration {
 	@Bean
 	public WebClientUtil webClientUtil() {
 		return new WebClientUtil();
+	}
+
+
+	@Bean
+	public CacheUtil cacheService() {
+		return new CacheUtil();
 	}
 
 }

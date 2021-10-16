@@ -8,36 +8,33 @@ public class CacheUtil {
 	
 	/**
 	 * Obtém o valor da key
-	 * @param cdSistema
-	 * @param nmSecao
+	 * @param nmProjeto
 	 * @param nmParametro
 	 * @return String
 	 */
-	@Cacheable(value = "cache", key = "{#cdSistema, #nmSecao, #nmParametro}", unless = "#result == null")
-	public String getCache(String cdSistema, String nmSecao, String nmParametro) {
+	@Cacheable(value = "cache", key = "{#nmProjeto, #nmParametro}", unless = "#result == null")
+	public String getCache(String nmProjeto, String nmParametro) {
 		return null;
 	}
 	
 	/**
 	 * Cadastra ou atualiza o valor da key
-	 * @param cdSistema
-	 * @param nmSecao
+	 * @param nmProjeto
 	 * @param nmParametro
 	 * @param vlParametro
 	 * @return String
 	 */
-	@CachePut(value = "cache", key = "{#cdSistema, #nmSecao, #nmParametro}", unless = "#vlParametro == null")
-	public String setCache(String cdSistema, String nmSecao, String nmParametro, String vlParametro) {
+	@CachePut(value = "cache", key = "{#nmProjeto, #nmParametro}", unless = "#vlParametro == null")
+	public String setCache(String nmProjeto, String nmParametro, String vlParametro) {
 		return vlParametro;
 	}
 	
 	/**
 	 * Exclui a key
-	 * @param cdSistema
-	 * @param nmSecao
+	 * @param nmProjeto
 	 * @param nmParametro
 	 */
-	@CacheEvict(value = "cache", key = "{#cdSistema, #nmSecao, #nmParametro}")
-	public void delCache(String cdSistema, String nmSecao, String nmParametro) { }
+	@CacheEvict(value = "cache", key = "{#nmProjeto, #nmParametro}")
+	public void delCache(String nmProjeto, String nmParametro) { }
 
 }
