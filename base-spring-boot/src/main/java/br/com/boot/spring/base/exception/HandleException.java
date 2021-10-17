@@ -21,6 +21,7 @@ import org.springframework.beans.TypeMismatchException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.redis.serializer.SerializationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
@@ -47,6 +48,7 @@ import br.com.boot.spring.base.model.ResponseModel;
 import br.com.boot.spring.base.util.ValueUtil;
 import br.com.boot.spring.base.util.response.EntidadeResponse;
 import br.com.boot.spring.base.util.response.ResponseUtil;
+import io.lettuce.core.RedisException;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -65,7 +67,7 @@ public class HandleException {
 	
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<EntidadeResponse> handle(Exception e) {
-		log.error("handleException", e);
+		log.error("handle", e);
 		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, e.toString(), MSG_USUARIO_ERRO);
 	}
 
@@ -76,6 +78,7 @@ public class HandleException {
 
 	@ExceptionHandler(BindException.class)
 	public ResponseEntity<EntidadeResponse> handleBind(BindException be) {
+		log.error("handleBind", be);
 		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, be.toString(), MSG_USUARIO_ERRO);
 	}
 
@@ -92,12 +95,14 @@ public class HandleException {
 
 	@ExceptionHandler(ConversionNotSupportedException.class)
 	public ResponseEntity<EntidadeResponse> handleConversionNotSupported(ConversionNotSupportedException cnse) {
+		log.error("handleConversionNotSupported", cnse);
 		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, cnse.toString(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(DataAccessException.class)
 	public ResponseEntity<EntidadeResponse> handleDataAccess(DataAccessException dae) {
-		return responseUtil.responseErro(BAD_REQUEST, dae.getRootCause().getMessage(), MSG_USUARIO_ERRO);
+		log.error("handleDataAccess", dae);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, dae.getMessage(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(DataIntegrityViolationException.class)
@@ -118,6 +123,7 @@ public class HandleException {
 
 	@ExceptionHandler(HttpMediaTypeNotAcceptableException.class)
 	public ResponseEntity<EntidadeResponse> handleHttpMediaTypeNotAcceptable(HttpMediaTypeNotAcceptableException hmtnae) {
+		log.error("handleHttpMediaTypeNotAcceptable", hmtnae);
 		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, hmtnae.toString(), MSG_USUARIO_ERRO);
 	}
 	
@@ -146,6 +152,7 @@ public class HandleException {
 	
 	@ExceptionHandler(HttpMessageNotWritableException.class)
 	public ResponseEntity<EntidadeResponse> handleHttpMessageNotWritable(HttpMessageNotWritableException hmnwe) {
+		log.error("handleHttpMessageNotWritable", hmnwe);
 		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, hmnwe.toString(), MSG_USUARIO_ERRO);
 	}
 
@@ -211,6 +218,18 @@ public class HandleException {
 		return responseUtil.responseErro(EXPECTATION_FAILED, msrpe.toString(), MSG_USUARIO_ERRO);
 	}
 	
+	@ExceptionHandler(RedisException.class)
+	public ResponseEntity<EntidadeResponse> handleRedis(RedisException re) {
+		log.error("handleRedis", re);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, re.toString(), MSG_USUARIO_ERRO);
+	}
+
+	@ExceptionHandler(SerializationException.class)
+	public ResponseEntity<EntidadeResponse> handleSerialization(SerializationException se) {
+		log.error("handleSerialization", se);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, se.toString(), MSG_USUARIO_ERRO);
+	}
+
 	@ExceptionHandler(ServiceException.class)
 	public ResponseEntity<EntidadeResponse> handleService(ServiceException se) {
 		return responseUtil.responseErro(BAD_REQUEST, se.toString(), se.getMessage());
@@ -218,33 +237,38 @@ public class HandleException {
 
 	@ExceptionHandler(ServletRequestBindingException.class)
 	public ResponseEntity<EntidadeResponse> handleServletRequestBinding(ServletRequestBindingException srbe) {
+		log.error("handleServletRequestBinding", srbe);
 		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, srbe.toString(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(TypeMismatchException.class)
 	public ResponseEntity<EntidadeResponse> handleTypeMismatch(TypeMismatchException tme) {
+		log.error("handleTypeMismatch", tme);
 		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, tme.toString(), MSG_USUARIO_ERRO);
 	}
 
 	@ExceptionHandler(UndeclaredThrowableException.class)
 	public ResponseEntity<EntidadeResponse> handleUndeclaredThrowable(UndeclaredThrowableException ute) {
-		return responseUtil.responseErro(BAD_REQUEST, ute.getCause().toString(), MSG_USUARIO_ERRO);
+		log.error("handleUndeclaredThrowable", ute);
+		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, ute.getCause().toString(), MSG_USUARIO_ERRO);
 	}
 
 	// Captura exceções do WebClientResquest
 	@ExceptionHandler(WebClientRequestException.class)
 	public ResponseEntity<EntidadeResponse> handleWebClientRequest(WebClientRequestException wcre) throws JsonMappingException, JsonProcessingException {
+		log.error("handleWebClientRequest", wcre);
 		return responseUtil.responseErro(SERVICE_UNAVAILABLE, wcre.getMessage(), MSG_USUARIO_ERRO);
 	}
 	
 	// Captura exceções do WebClientResponse
 	@ExceptionHandler(WebClientResponseException.class)
 	public ResponseEntity<?> handleWebClientResponse(WebClientResponseException wcre) throws JsonMappingException, JsonProcessingException, Exception {
+		log.error("handleWebClientResponse", wcre);
+
 		ResponseEntity<?> responseEntity = null;
 
 		try {
-			ResponseModel resultModel = ValueUtil.readValue(wcre.getResponseBodyAsString(), ResponseModel.class);
-			responseEntity = new ResponseEntity<ResponseModel>(resultModel, wcre.getStatusCode());
+			responseEntity = new ResponseEntity<ResponseModel>(ValueUtil.readValue(wcre.getResponseBodyAsString(), ResponseModel.class), wcre.getStatusCode());
 		} catch (Exception e) {
 			responseEntity = responseUtil.responseErro(wcre.getStatusCode(), wcre.getMessage(), MSG_USUARIO_ERRO);
 		}
