@@ -3,8 +3,8 @@ insert into public.editora (codigo, nome) values (1, 'Saraiva');
 insert into public.editora (codigo, nome) values (2, 'Harper Collins');
 
 --Local
-insert into public.editora (codigo, nome) values (1, 'Local 1');
-insert into public.editora (codigo, nome) values (2, 'Local 2');
+insert into public.local (codigo, nome) values (1, 'Local 1');
+insert into public.local (codigo, nome) values (2, 'Local 2');
 
 --Autor
 insert into public.autor (codigo, primeiro_nome, inicial_meio_nome, ultimo_nome) values (1, 'Harv', 'T', 'Eker');
