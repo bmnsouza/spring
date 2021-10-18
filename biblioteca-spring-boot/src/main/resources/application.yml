@@ -43,44 +43,16 @@ logging:
 # management
 management:
   endpoint:
-    caches:
-      enabled: true 
     health:
       show-details: always  endpoints:
     web:
       exposure:
         include: "*"
-  health:
-    circuitbreakers:
-      enabled: true      
 
 
 # project
 project:
   version: ^project.version^
-
-
-# resilience4j
-resilience4j:
-  # retry
-  retry:
-    instances:
-      backendA:
-        max-attempts: 3
-        wait-duration: 5000
-  # circuit breaker
-  circuitbreaker:
-    instances:
-      backendA:
-        automaticTransitionFromOpenToHalfOpenEnabled: true
-        eventConsumerBufferSize: 10
-        failureRateThreshold: 50
-        minimumNumberOfCalls: 5
-        permittedNumberOfCallsInHalfOpenState: 3
-        registerHealthIndicator: true
-        slidingWindowSize: 10
-        slidingWindowType: count-based
-        waitDurationInOpenState: 5s
 
 
 # server
