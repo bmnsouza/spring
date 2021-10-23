@@ -35,6 +35,6 @@ public class CacheUtil {
 	 * @param nmParametro
 	 */
 	@CacheEvict(value = "parametro", key = "{#nmProjeto, #nmParametro}")
-	public void delCache(String nmProjeto, String nmParametro) { }
+	public void delCache(String nmProjeto, String nmParametro) {}
 
 }
