@@ -12,7 +12,7 @@ public class CacheUtil {
 	 * @param nmParametro
 	 * @return String
 	 */
-	@Cacheable(value = "cache", key = "{#nmProjeto, #nmParametro}", unless = "#result == null")
+	@Cacheable(value = "parametro", key = "{#nmProjeto, #nmParametro}", unless = "#result == null")
 	public String getCache(String nmProjeto, String nmParametro) {
 		return null;
 	}
@@ -24,7 +24,7 @@ public class CacheUtil {
 	 * @param vlParametro
 	 * @return String
 	 */
-	@CachePut(value = "cache", key = "{#nmProjeto, #nmParametro}", unless = "#vlParametro == null")
+	@CachePut(value = "parametro", key = "{#nmProjeto, #nmParametro}", unless = "#vlParametro == null")
 	public String setCache(String nmProjeto, String nmParametro, String vlParametro) {
 		return vlParametro;
 	}
@@ -34,7 +34,7 @@ public class CacheUtil {
 	 * @param nmProjeto
 	 * @param nmParametro
 	 */
-	@CacheEvict(value = "cache", key = "{#nmProjeto, #nmParametro}")
+	@CacheEvict(value = "parametro", key = "{#nmProjeto, #nmParametro}")
 	public void delCache(String nmProjeto, String nmParametro) { }
 
 }
