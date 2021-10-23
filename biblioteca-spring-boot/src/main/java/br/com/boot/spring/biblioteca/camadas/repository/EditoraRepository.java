@@ -1,5 +1,7 @@
 package br.com.boot.spring.biblioteca.camadas.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,6 +14,6 @@ import br.com.boot.spring.biblioteca.camadas.entity.Editora;
 public interface EditoraRepository extends JpaRepository<Editora, Integer> {
 	
 	@Query(nativeQuery = true)
-	Slice<Editora> buscar(Integer codigo, String nome, Pageable pageable);
+	Optional<Slice<Editora>> buscar(Integer codigo, String nome, Pageable pageable);
 
 }
