@@ -87,7 +87,6 @@ public class ApiExceptionHandler {
 		String msgTecnica = cve.getConstraintViolations().stream()
 				.map(cv -> new StringBuilder(cv.getPropertyPath().toString().split("[.]")[1]).append(": ").append(cv.getMessage()))
 				.findFirst().get().toString();
-		
 		return responseUtil.responseErro(BAD_REQUEST, msgTecnica, MSG_USUARIO_CAMPO_INVALIDO);
 	}
 
@@ -180,9 +179,9 @@ public class ApiExceptionHandler {
 	// Captura exceções do RequestBody
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	protected ResponseEntity<EntidadeResponse> handleMethodArgumentNotValid(MethodArgumentNotValidException manve) {
-		StringBuilder msgTecnica = new StringBuilder(manve.getBindingResult().getFieldError().getField()).append(": ")
-				.append(manve.getBindingResult().getFieldError().getDefaultMessage());
-		return responseUtil.responseErro(BAD_REQUEST, msgTecnica.toString(), MSG_USUARIO_CAMPO_INVALIDO);
+		String msgTecnica = new StringBuilder(manve.getBindingResult().getFieldError().getField()).append(": ")
+				.append(manve.getBindingResult().getFieldError().getDefaultMessage()).toString();
+		return responseUtil.responseErro(BAD_REQUEST, msgTecnica, MSG_USUARIO_CAMPO_INVALIDO);
 	}
 
 	// Captura exceções do RequestParam
