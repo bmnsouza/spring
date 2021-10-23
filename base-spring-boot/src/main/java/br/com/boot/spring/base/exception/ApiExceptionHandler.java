@@ -58,8 +58,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ApiExceptionHandler {
 
-	private static final String MSG_USUARIO_CAMPO_INVALIDO = "Requisição possui campo inválido. Faça o preenchimento correto e tente novamente";
-	private static final String MSG_USUARIO_ERRO = "Não foi possível realizar a operação";
+	protected static final String MSG_USUARIO_CAMPO_INVALIDO = "Requisição possui campo inválido. Faça o preenchimento correto e tente novamente";
+	protected static final String MSG_USUARIO_ERRO = "Não foi possível realizar a operação";
 
 	@Autowired
 	private ResponseUtil responseUtil;
