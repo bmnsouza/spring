@@ -2,6 +2,7 @@ package br.com.boot.spring.oxeconfeitaria.domain.service.impl;
 
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -34,24 +35,27 @@ public class InsumoServiceImpl implements InsumoService {
 
 	@Override
 	public ResponseEntity<EntidadeResponse> buscar(Integer idInsumo, String dsInsumo) {
-		List<Insumo> dados = null;
-		
+		Optional<List<Insumo>> optional = Optional.empty();
+
 		if (idInsumo != null) {
-			dados = insumoRepository.getByIdInsumo(idInsumo);
+			optional = insumoRepository.getByIdInsumo(idInsumo);
 		} else if (dsInsumo != null) {
-			dados = insumoRepository.findByDsInsumoContainingIgnoreCase(dsInsumo, Sort.by(Sort.Direction.ASC, "dsInsumo"));
+			optional = insumoRepository.findByDsInsumoContainingIgnoreCase(dsInsumo, Sort.by(Sort.Direction.ASC, "dsInsumo"));
 		} else {
-			dados = insumoRepository.findAll(Sort.by(Sort.Direction.ASC, "dsInsumo"));
+			optional = Optional.ofNullable(insumoRepository.findAll(Sort.by(Sort.Direction.ASC, "dsInsumo")));
 		}
 		
-		return responseUtil.responseSucesso(OK, dados);
+		return optional.filter(dados -> !dados.isEmpty())
+				.map(dados -> responseUtil.responseSucesso(OK, dados))
+				.orElse(responseUtil.responseSucesso(NOT_FOUND));
 	}
 	
 	@Override
 	public ResponseEntity<EntidadeResponse> buscarNativeQuery(Integer idInsumo, String dsInsumo) {
-		List<Insumo> dados = insumoRepository.buscarNativeQuery(idInsumo, dsInsumo); 
-		return responseUtil.responseSucesso(OK, dados);
-
+		return insumoRepository.buscarNativeQuery(idInsumo, dsInsumo)
+				.filter(dados -> !dados.isEmpty())
+				.map(dados -> responseUtil.responseSucesso(OK, dados))
+				.orElse(responseUtil.responseSucesso(NOT_FOUND));
 	}
 	
 	@Override
