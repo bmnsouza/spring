@@ -1,7 +1,6 @@
 package br.com.boot.spring.oxeconfeitaria.domain.service.impl;
 
 import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.OK;
 
 import java.time.LocalDate;
@@ -35,32 +34,28 @@ public class InsumoServiceImpl implements InsumoService {
 
 	@Override
 	public ResponseEntity<EntidadeResponse> buscar(Integer idInsumo, String dsInsumo) {
-		Optional<List<Insumo>> optional = Optional.empty();
+		List<Insumo> dados = null;
 		
 		if (idInsumo != null) {
-			optional = insumoRepository.getByIdInsumo(idInsumo);
+			dados = insumoRepository.getByIdInsumo(idInsumo);
 		} else if (dsInsumo != null) {
-			optional = insumoRepository.findByDsInsumoContainingIgnoreCase(dsInsumo, Sort.by(Sort.Direction.ASC, "dsInsumo"));
+			dados = insumoRepository.findByDsInsumoContainingIgnoreCase(dsInsumo, Sort.by(Sort.Direction.ASC, "dsInsumo"));
 		} else {
-			optional = Optional.ofNullable(insumoRepository.findAll(Sort.by(Sort.Direction.ASC, "dsInsumo")));
+			dados = insumoRepository.findAll(Sort.by(Sort.Direction.ASC, "dsInsumo"));
 		}
 		
-		return optional.filter(dados -> !dados.isEmpty())
-				.map(dados -> responseUtil.responseSucesso(OK, dados))
-				.orElse(responseUtil.responseSucesso(NOT_FOUND));
+		return responseUtil.responseSucesso(OK, dados);
 	}
 	
 	@Override
 	public ResponseEntity<EntidadeResponse> buscarNativeQuery(Integer idInsumo, String dsInsumo) {
-		return insumoRepository.buscarNativeQuery(idInsumo, dsInsumo)
-				.filter(dados -> !dados.isEmpty())
-				.map(dados -> responseUtil.responseSucesso(OK, dados))
-				.orElse(responseUtil.responseSucesso(NOT_FOUND));
+		List<Insumo> dados = insumoRepository.buscarNativeQuery(idInsumo, dsInsumo); 
+		return responseUtil.responseSucesso(OK, dados);
+
 	}
 	
 	@Override
 	public ResponseEntity<EntidadeResponse> cadastrar(Cadastro cadastro) {
-		
 		Insumo insumo = new Insumo();
 		insumo.setDsInsumo(cadastro.getDsInsumo());
 		insumo.setNrQtdBase(cadastro.getNrQtdBase());
@@ -78,7 +73,6 @@ public class InsumoServiceImpl implements InsumoService {
 
 	@Override
 	public ResponseEntity<EntidadeResponse> atualizar(Atualizacao atualizacao) throws ServiceException {
-		
 		// Verifica se o Insumo existe
 		Optional<Insumo> optional = insumoRepository.findById(atualizacao.getIdInsumo());
 		optional.orElseThrow(() -> new ServiceException("Insumo não encontrado"));
@@ -97,7 +91,6 @@ public class InsumoServiceImpl implements InsumoService {
 
 	@Override
 	public ResponseEntity<EntidadeResponse> excluir(Integer idInsumo) throws ServiceException {
-		
 		// Verifica se o Insumo existe
 		Optional<Insumo> optional = insumoRepository.findById(idInsumo);
 		optional.orElseThrow(() -> new ServiceException("Insumo não encontrado"));

@@ -1,7 +1,6 @@
 package br.com.boot.spring.biblioteca.domain.service.impl;
 
 import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.OK;
 
 import java.util.Optional;
@@ -9,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -35,10 +35,8 @@ public class LocalServiceImpl implements LocalService {
 
 	@Override
 	public ResponseEntity<EntidadeResponse> buscar(Integer codigo, String nome, Integer pagina) {
-		return localRepository.buscar(codigo, nome, PageRequest.of(pagina, pageSize))
-				.filter(dados -> !dados.isEmpty())
-				.map(dados -> responseUtil.responseSucesso(OK, dados))
-				.orElse(responseUtil.responseSucesso(NOT_FOUND));
+		Slice<Local> dados = localRepository.buscar(codigo, nome, PageRequest.of(pagina, pageSize)); 
+		return responseUtil.responseSucesso(OK, dados);
 	}
 	
 	@Override
