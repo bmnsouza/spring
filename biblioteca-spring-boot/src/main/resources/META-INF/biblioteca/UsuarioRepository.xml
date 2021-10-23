@@ -2,7 +2,7 @@
 <entity-mappings version="2.0" xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
 
-	<named-native-query name="Usuario.buscar" result-class="br.com.boot.spring.biblioteca.camadas.entity.Usuario">
+	<named-native-query name="Usuario.buscar" result-class="br.com.boot.spring.biblioteca.domain.entity.Usuario">
 		<query>
 		<![CDATA[
 			select * from public.usuario usu
