@@ -5,8 +5,10 @@
 	<named-native-query name="Insumo.buscarNativeQuery" result-class="br.com.boot.spring.oxeconfeitaria.domain.entity.Insumo">
 		<query>
 		<![CDATA[
-			select * from insumo where (?1 is null or idinsumo = to_number(cast(?1 as varchar), '999999999')) 
-			and (?2 is null or upper(dsinsumo) like upper('%' || cast(?2 as varchar) || '%')) order by dsinsumo
+			select * from insumo ins
+			where (?1 is null or ins.idinsumo = to_number(cast(?1 as varchar), '999999999'))
+			and (?2 is null or upper(ins.dsinsumo) like upper('%' || cast(?2 as varchar) || '%'))
+			order by ins.dsinsumo
 		]]>
 		</query>
 	</named-native-query>
