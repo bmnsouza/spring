@@ -6,8 +6,8 @@
 		<query>
 		<![CDATA[
 			select * from public.editora edi
-			where (cast(?1 as varchar) is null or edi.codigo = to_number(cast(?1 as varchar), '999999999')) 
-			and (cast(?2 as varchar) is null or upper(edi.nome) like upper('%' || cast(?2 as varchar) || '%'))
+			where (?1 is null or edi.codigo = to_number(cast(?1 as varchar), '999999999')) 
+			and (?2 is null or upper(edi.nome) like upper('%' || cast(?2 as varchar) || '%'))
 			order by edi.nome
 		]]>
 		</query>

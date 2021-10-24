@@ -6,8 +6,8 @@
 		<query>
 		<![CDATA[
 			select * from public.local loc
-			where (cast(?1 as varchar) is null or loc.codigo = to_number(cast(?1 as varchar), '999999999')) 
-			and (cast(?2 as varchar) is null or upper(loc.nome) like upper('%' || cast(?2 as varchar) || '%'))
+			where (?1 is null or loc.codigo = to_number(cast(?1 as varchar), '999999999')) 
+			and (?2 is null or upper(loc.nome) like upper('%' || cast(?2 as varchar) || '%'))
 			order by loc.nome
 		]]>
 		</query>

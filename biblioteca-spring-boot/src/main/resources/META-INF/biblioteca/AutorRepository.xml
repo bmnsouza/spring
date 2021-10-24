@@ -6,10 +6,10 @@
 		<query>
 		<![CDATA[
 			select * from public.autor aut
-			where (cast(?1 as varchar) is null or aut.codigo = to_number(cast(?1 as varchar), '999999999'))
-			and (cast(?2 as varchar) is null or upper(aut.primeiro_nome) like upper('%' || cast(?2 as varchar) || '%'))
-			and (cast(?3 as varchar) is null or upper(aut.inicial_meio_nome) = upper(cast(?3 as varchar)))
-			and (cast(?4 as varchar) is null or upper(aut.ultimo_nome) like upper('%' || cast(?4 as varchar) || '%'))
+			where (?1 is null or aut.codigo = to_number(cast(?1 as varchar), '999999999'))
+			and (?2 is null or upper(aut.primeiro_nome) like upper('%' || cast(?2 as varchar) || '%'))
+			and (?3 is null or upper(aut.inicial_meio_nome) = upper(cast(?3 as varchar)))
+			and (?4 is null or upper(aut.ultimo_nome) like upper('%' || cast(?4 as varchar) || '%'))
 			order by aut.primeiro_nome
 		]]>
 		</query>
