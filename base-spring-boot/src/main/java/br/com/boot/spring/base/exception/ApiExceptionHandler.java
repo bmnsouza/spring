@@ -15,6 +15,7 @@ import java.time.format.DateTimeParseException;
 
 import javax.validation.ConstraintViolationException;
 
+import org.apache.commons.lang3.concurrent.CircuitBreakingException;
 import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,6 +80,12 @@ public class ApiExceptionHandler {
 	protected ResponseEntity<EntidadeResponse> handleBind(BindException be) {
 		log.error("handleBind", be);
 		return responseUtil.responseErro(INTERNAL_SERVER_ERROR, be.toString(), MSG_USUARIO_ERRO);
+	}
+
+	@ExceptionHandler(CircuitBreakingException.class)
+	protected ResponseEntity<EntidadeResponse> handleCircuitBreaking(CircuitBreakingException cbe) {
+		log.error("handleCircuitBreaking", cbe);
+		return responseUtil.responseErro(BAD_REQUEST, cbe.toString(), MSG_USUARIO_ERRO);
 	}
 
 	// Captura exceções do RequestParam
