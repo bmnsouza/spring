@@ -51,7 +51,7 @@ public class CacheUtil {
 
 
 	/**
-	 * Realiza a limpeza dos caches com o nome passado por parâmetro
+	 * Realiza a limpeza do cache com o nome passado por parâmetro
 	 */
 	public void clearCache(String name) {
 		cacheManager.getCache(name).clear();
