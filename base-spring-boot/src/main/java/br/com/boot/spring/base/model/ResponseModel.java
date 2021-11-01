@@ -1,9 +1,13 @@
 package br.com.boot.spring.base.model;
 
+import java.io.Serializable;
+
 import lombok.Getter;
 
 @Getter
-public class ResponseModel {
+public class ResponseModel implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Response response;
 
