@@ -76,6 +76,8 @@ spring:
         instance:
           prefer-ip: true 
         url: http://localhost:8089
+  cache:
+    type: redis
   data:
     web:
       pageable:
@@ -90,6 +92,9 @@ spring:
     show-sql: true
   main:
     banner-mode: off
+  redis:
+    host: localhost
+    port: 6379  
   servlet:
     multipart:
       max-file-size: 3MB
