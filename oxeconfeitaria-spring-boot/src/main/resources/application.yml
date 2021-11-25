@@ -93,8 +93,7 @@ spring:
   main:
     banner-mode: off
   redis:
-    host: localhost
-    port: 6379  
+    url: redis://localhost:6379  
   servlet:
     multipart:
       max-file-size: 3MB
