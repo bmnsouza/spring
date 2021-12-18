@@ -5,7 +5,6 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.OK;
 
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -69,10 +68,7 @@ public class InsumoServiceImpl implements InsumoService {
 		
 		insumo = insumoRepository.save(insumo);
 
-		Map<String, Integer> dados = new HashMap<>();
-		dados.put("idInsumo", insumo.getIdInsumo());
-		
-		return responseUtil.responseSucesso(CREATED, dados);
+		return responseUtil.responseSucesso(CREATED, Map.of("idInsumo", insumo.getIdInsumo()));
 	}
 
 	@Override

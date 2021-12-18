@@ -1,6 +1,5 @@
 package br.com.boot.spring.oxeconfeitaria.core.configuration;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
 
@@ -45,11 +44,8 @@ public class OxeconfeitariaConfiguration {
 	@Primary
 	@Bean(ENTITY_MANAGER_FACTORY)
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder,	@Qualifier(DATA_SOURCE) DataSource dataSource) {
-		Map<String, Object> properties = new HashMap<>();
-		properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-
 		return builder.dataSource(dataSource)
-				.properties(properties)
+				.properties(Map.of("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect"))
 				.packages("br.com.boot.spring.oxeconfeitaria.domain.entity")
 				.persistenceUnit("oxeconfeitariaPU")
 				.build();

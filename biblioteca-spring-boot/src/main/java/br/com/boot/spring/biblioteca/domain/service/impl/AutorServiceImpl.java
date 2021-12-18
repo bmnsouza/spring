@@ -35,7 +35,7 @@ public class AutorServiceImpl implements AutorService {
 
 	@Override
 	public ResponseEntity<EntidadeResponse> buscar(Integer codigo, String primeiroNome, String inicialMeioNome, String ultimoNome, Integer pagina) {
-		Slice<Autor> dados = autorRepository.buscar(codigo, primeiroNome, inicialMeioNome, ultimoNome, PageRequest.of(pagina, pageSize)); 
+		Slice<Autor> dados = autorRepository.buscar(codigo, primeiroNome, inicialMeioNome, ultimoNome, PageRequest.of(pagina, pageSize));
 		return responseUtil.responseSucesso(OK, dados);
 	}
 	
