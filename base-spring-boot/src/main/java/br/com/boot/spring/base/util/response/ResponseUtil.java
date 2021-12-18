@@ -79,9 +79,7 @@ public class ResponseUtil {
 			paginacao.setUltima(slice.isLast());
 			
 			// Adiciona paginacao à lista
-			Map<String, Object> hashPaginacao = new HashMap<>();
-			hashPaginacao.put("paginacao", paginacao);
-			lista.add(hashPaginacao);
+			lista.add(Map.of("paginacao", paginacao));
 
 			dados = lista;
 		}
