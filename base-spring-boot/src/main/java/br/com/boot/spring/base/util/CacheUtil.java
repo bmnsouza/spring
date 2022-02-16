@@ -1,22 +1,22 @@
 package br.com.boot.spring.base.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@AllArgsConstructor
 public class CacheUtil {
 	
 	// Constantes que identificam os nomes dos caches
 	public static final String CACHE_BIBLIOTECA = "cache-biblioteca";
 	public static final String CACHE_OXECONFEITARIA = "cache-oxeconfeitaria"; 
 	
-	@Autowired
-    private CacheManager cacheManager;
+    private final CacheManager cacheManager;
 	
 	/**
 	 * Obtém o valor da key

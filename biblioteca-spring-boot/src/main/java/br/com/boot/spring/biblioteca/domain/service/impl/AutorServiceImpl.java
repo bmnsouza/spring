@@ -5,7 +5,6 @@ import static org.springframework.http.HttpStatus.OK;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
@@ -20,15 +19,15 @@ import br.com.boot.spring.biblioteca.domain.entity.dto.AutorDTO.Request.Atualiza
 import br.com.boot.spring.biblioteca.domain.entity.dto.AutorDTO.Request.Cadastro;
 import br.com.boot.spring.biblioteca.domain.repository.AutorRepository;
 import br.com.boot.spring.biblioteca.domain.service.AutorService;
+import lombok.AllArgsConstructor;
 
 @Service
+@AllArgsConstructor
 public class AutorServiceImpl implements AutorService {
 
-	@Autowired
-	private AutorRepository autorRepository;
+	private final AutorRepository autorRepository;
 
-	@Autowired
-	private ResponseUtil responseUtil;
+	private final ResponseUtil responseUtil;
 
 	@Value("${spring.data.web.pageable.default-page-size}")
 	private int pageSize;

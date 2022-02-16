@@ -18,7 +18,6 @@ import javax.validation.ConstraintViolationException;
 import org.apache.commons.lang3.concurrent.CircuitBreakingException;
 import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.beans.TypeMismatchException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.redis.serializer.SerializationException;
@@ -49,6 +48,7 @@ import br.com.boot.spring.base.util.ValueUtil;
 import br.com.boot.spring.base.util.response.EntidadeResponse;
 import br.com.boot.spring.base.util.response.ResponseUtil;
 import io.lettuce.core.RedisException;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -57,13 +57,13 @@ import lombok.extern.slf4j.Slf4j;
  * Caso algum projeto necessite de um tratamento diferenciado para um dos métodos existentes, deverá sobrescrevê-lo.
  */
 @Slf4j
+@AllArgsConstructor
 public class ApiExceptionHandler {
 
 	protected static final String MSG_USUARIO_CAMPO_INVALIDO = "Requisição possui campo inválido. Faça o preenchimento correto e tente novamente";
 	protected static final String MSG_USUARIO_ERRO = "Não foi possível realizar a operação";
 
-	@Autowired
-	private ResponseUtil responseUtil;
+	private final ResponseUtil responseUtil;
 	
 	@ExceptionHandler(Exception.class)
 	protected ResponseEntity<EntidadeResponse> handle(Exception e) {

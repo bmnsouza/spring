@@ -6,7 +6,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,15 +27,16 @@ import br.com.boot.spring.oxeconfeitaria.domain.service.InsumoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 
 @Validated
 @RestController
 @RequestMapping("v1/insumo")
 @Tag(name = "insumo", description = "APIs de Insumo")
+@AllArgsConstructor
 public class InsumoController {
 
-	@Autowired
-	private InsumoService insumoService;
+	private final InsumoService insumoService;
 
 	@Operation(summary = "Busca insumo pelo identificador ou descrição.",
 			description = "Se nenhum parâmetro for informado, serão retornados todos os registros.<br><br>"

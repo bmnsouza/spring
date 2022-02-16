@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,15 +28,16 @@ import br.com.boot.spring.biblioteca.domain.service.AutorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 
 @Validated
 @RestController
 @RequestMapping("v1/autor")
 @Tag(name = "autor", description = "APIs de Autor")
+@AllArgsConstructor
 public class AutorController {
 
-	@Autowired
-	private AutorService autorService;
+	private final AutorService autorService;
 
 	@Operation(summary = "Busca autor pelo código e/ou primeiro nome e/ou inicial do nome do meio e/ou último nome.",
 			description = "Se nenhum parâmetro for informado, serão retornados todos os registros paginados.")

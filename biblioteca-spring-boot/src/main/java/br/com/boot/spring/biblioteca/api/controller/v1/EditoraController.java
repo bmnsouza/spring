@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,15 +28,16 @@ import br.com.boot.spring.biblioteca.domain.service.EditoraService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 
 @Validated
 @RestController
 @RequestMapping("v1/editora")
 @Tag(name = "editora", description = "APIs de Editora")
+@AllArgsConstructor
 public class EditoraController {
 
-	@Autowired
-	private EditoraService editoraService;
+	private final EditoraService editoraService;
 
 	@Operation(summary = "Busca editora pelo código e/ou nome.",
 			description = "Se nenhum parâmetro for informado, serão retornados todos os registros paginados.")

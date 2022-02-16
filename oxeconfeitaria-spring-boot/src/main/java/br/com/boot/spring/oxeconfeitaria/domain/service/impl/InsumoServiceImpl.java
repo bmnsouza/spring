@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -22,15 +21,15 @@ import br.com.boot.spring.oxeconfeitaria.domain.entity.dto.InsumoDTO.Request.Atu
 import br.com.boot.spring.oxeconfeitaria.domain.entity.dto.InsumoDTO.Request.Cadastro;
 import br.com.boot.spring.oxeconfeitaria.domain.repository.InsumoRepository;
 import br.com.boot.spring.oxeconfeitaria.domain.service.InsumoService;
+import lombok.AllArgsConstructor;
 
 @Service
+@AllArgsConstructor
 public class InsumoServiceImpl implements InsumoService {
 
-	@Autowired
-	private InsumoRepository insumoRepository;
+	private final InsumoRepository insumoRepository;
 
-	@Autowired
-	private ResponseUtil responseUtil;
+	private final ResponseUtil responseUtil;
 
 	@Override
 	public ResponseEntity<EntidadeResponse> buscar(Integer idInsumo, String dsInsumo) {
